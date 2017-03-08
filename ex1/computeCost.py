@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def computeCost(X, y, theta):
     """
        computes the cost of using theta as the parameter for linear 
