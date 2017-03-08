@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def computeNumericalGradient(J, theta):
     """computes the numerical gradient of the function J around theta.
     Calling y = J(theta) should return the function value at theta.

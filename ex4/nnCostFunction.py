@@ -14,18 +14,18 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
   partial derivatives of the neural network.
     """
 
-# Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
-# for our 2 layer neural network
-# Obtain Theta1 and Theta2 back from nn_params
+    # Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
+    # for our 2 layer neural network
+    # Obtain Theta1 and Theta2 back from nn_params
     Theta1 = np.reshape(nn_params[:hidden_layer_size * (input_layer_size + 1)],
-                       (hidden_layer_size, input_layer_size + 1), order='F').copy()
+                        (hidden_layer_size, input_layer_size + 1), order='F').copy()
 
     Theta2 = np.reshape(nn_params[hidden_layer_size * (input_layer_size + 1):],
-                       (num_labels, (hidden_layer_size + 1)), order='F').copy()
+                        (num_labels, (hidden_layer_size + 1)), order='F').copy()
 
 
 
-# Setup some useful variables
+    # Setup some useful variables
     m, _ = X.shape
 
 
@@ -60,15 +60,9 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 #               the regularization separately and then add them to Theta1_grad
 #               and Theta2_grad from Part 2.
 #
-
-
-
-    # -------------------------------------------------------------
-
-    # =========================================================================
+# =========================================================================
 
     # Unroll gradient
     grad = np.hstack((Theta1_grad.T.ravel(), Theta2_grad.T.ravel()))
-
 
     return J, grad
