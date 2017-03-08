@@ -28,17 +28,22 @@ srcs = [
 def output(part_id):
     # Random Test Cases
     X = np.column_stack((np.ones(20),
-                          (np.exp(1) * np.sin(np.linspace(1, 20, 20))),
-                          (np.exp(0.5) * np.cos(np.linspace(1, 20, 20)))))
-    y = np.sin(X[:,0] + X[:,1]) > 0
+                         (np.exp(1) * np.sin(np.linspace(1, 20, 20))),
+                         (np.exp(0.5) * np.cos(np.linspace(1, 20, 20)))))
+    y = np.sin(X[:, 0] + X[:, 1]) > 0
 
-    Xm = np.array([[-1,-1],[-1,-2],[-2,-1],[-2,-2],[1,1],[1,2],[2,1],[2,2],[-1,1],
-          [-1,2],[-2,1],[-2,2],[1,-1],[1,-2],[-2,-1],[-2,-2]]).reshape((16,2))
-    ym = np.array([1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4]).reshape(16,1)
-    t1 = np.sin(np.array(range(1,24,2)).reshape(3,4).T)
-    t2 = np.cos(np.array(range(1,40,2)).reshape(5,4).T)
+    Xm = np.array([[-1, -1], [-1, -2], [-2, -1], [-2, -2],
+                   [1, 1], [1, 2], [2, 1], [2, 2],
+                   [-1, 1], [-1, 2], [-2, 1], [-2, 2],
+                   [1, -1], [1, -2], [-2, -1], [-2, -2]]).reshape((16, 2))
+    ym = np.array([1, 1, 1, 1,
+                   2, 2, 2, 2,
+                   3, 3, 3, 3,
+                   4, 4, 4, 4]).reshape(16, 1)
+    t1 = np.sin(np.array(range(1, 24, 2)).reshape(3, 4).T)
+    t2 = np.cos(np.array(range(1, 40, 2)).reshape(5, 4).T)
 
-    fname = srcs[part_id-1].rsplit('.',1)[0]
+    fname = srcs[part_id - 1].rsplit('.', 1)[0]
     mod = __import__(fname, fromlist=[fname], level=1)
     func = getattr(mod, fname)
 
@@ -57,7 +62,7 @@ s = Submission(homework, part_names, srcs, output)
 try:
     s.submit()
 except Exception as ex:
-    template = "An exception of type {0} occured. Messsage:\n{1!r}"
+    template = 'An exception of type {0} occured. Messsage:\n{1!r}'
     message = template.format(type(ex).__name__, ex.args)
-    print message
+    print(message)
 

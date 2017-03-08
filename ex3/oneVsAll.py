@@ -11,13 +11,13 @@ def oneVsAll(X, y, num_labels, Lambda):
         corresponds to the classifier for label i
     """
 
-# Some useful variables
+    # Some useful variables
     m, n = X.shape
 
-# You need to return the following variables correctly 
+    # You need to return the following variables correctly
     all_theta = np.zeros((num_labels, n + 1))
 
-# Add ones to the X data matrix
+    # Add ones to the X data matrix
     X = np.column_stack((np.ones((m, 1)), X))
 
 # ====================== YOUR CODE HERE ======================
@@ -38,9 +38,6 @@ def oneVsAll(X, y, num_labels, Lambda):
     initial_theta = np.zeros((n + 1, 1))
 
     # This function will return theta and the cost
-
-
-
 # =========================================================================
 
     return all_theta

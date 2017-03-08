@@ -2,6 +2,7 @@ import numpy as np
 
 from ex2.sigmoid import sigmoid
 
+
 def predictOneVsAll(all_theta, X):
     """will return a vector of predictions
   for each example in the matrix X. Note that X contains the examples in
@@ -29,9 +30,7 @@ def predictOneVsAll(all_theta, X):
 #       max element, for more information see 'help max'. If your examples 
 #       are in rows, then, you can use max(A, [], 2) to obtain the max 
 #       for each row.
-#       
-
-
+#
 # =========================================================================
 
     return p + 1    # add 1 to offset index of maximum in A row

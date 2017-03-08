@@ -1,5 +1,6 @@
 from ex2.costFunctionReg import costFunctionReg
 
+
 def lrCostFunction(theta, X, y, Lambda):
     """computes the cost of using
     theta as the parameter for regularized logistic regression and the
@@ -19,9 +20,6 @@ def lrCostFunction(theta, X, y, Lambda):
 #       prediction for that example. You can make use of this to vectorize
 #       the cost function and gradient computations. 
 #
-
-
-
-    # =============================================================
+#  =============================================================
 
     return J
