@@ -12,10 +12,10 @@ def trainLinearReg(X, y, Lambda, method='CG', maxiter=200):
     trained parameters theta.
     """
 
-# Initialize Theta
+    # Initialize Theta
     initial_theta = np.zeros(X.shape[1])
 
-# Create "short hand" for the cost function to be minimized
+    # Create "short hand" for the cost function to be minimized
     costFunction = lambda t: linearRegCostFunction(X, y, t, Lambda)[0]
     gradFunction = lambda t: linearRegCostFunction(X, y, t, Lambda)[1]
 

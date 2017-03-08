@@ -14,5 +14,4 @@ def featureNormalize(X):
     sigma = np.std(X_norm, axis=0, ddof=1)
     X_norm = X_norm / sigma
 
-# ============================================================
     return X_norm, mu, sigma

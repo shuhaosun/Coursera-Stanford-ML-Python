@@ -25,16 +25,16 @@ srcs = [
 def output(part_id):
     # Random Test Cases
     X = np.column_stack((np.ones(10),
-                          (np.sin(np.arange(1, 16, 1.5))),
-                          (np.cos(np.arange(1, 16, 1.5)))))
+                        (np.sin(np.arange(1, 16, 1.5))),
+                        (np.cos(np.arange(1, 16, 1.5)))))
     y = np.sin(np.arange(1, 30, 3))
 
     Xval = np.column_stack((np.ones(10),
-                          (np.sin(np.arange(0, 14, 1.5))),
-                          (np.cos(np.arange(0, 14, 1.5)))))
-    yval = np.sin(np.arange(1,11))
+                           (np.sin(np.arange(0, 14, 1.5))),
+                           (np.cos(np.arange(0, 14, 1.5)))))
+    yval = np.sin(np.arange(1, 11))
 
-    fname = srcs[part_id-1].rsplit('.',1)[0]
+    fname = srcs[part_id-1].rsplit('.', 1)[0]
     mod = __import__(fname, fromlist=[fname], level=1)
     func = getattr(mod, fname)
 
@@ -58,6 +58,6 @@ s = Submission(homework, part_names, srcs, output)
 try:
     s.submit()
 except Exception as ex:
-    template = "An exception of type {0} occured. Messsage:\n{1!r}"
+    template = 'An exception of type {0} occured. Messsage:\n{1!r}'
     message = template.format(type(ex).__name__, ex.args)
-    print message
+    print(message)

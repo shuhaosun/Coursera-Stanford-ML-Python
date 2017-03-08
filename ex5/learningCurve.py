@@ -3,6 +3,7 @@ import numpy as np
 from trainLinearReg import trainLinearReg
 from linearRegCostFunction import linearRegCostFunction
 
+
 def learningCurve(X, y, Xval, yval, Lambda):
     """returns the train and
     cross validation set errors for a learning curve. In particular,
@@ -15,12 +16,12 @@ def learningCurve(X, y, Xval, yval, Lambda):
     datasets, you might want to do this in larger intervals.
     """
 
-# Number of training examples
+    # Number of training examples
     m, _ = X.shape
 
-# You need to return these values correctly
+    # You need to return these values correctly
     error_train = np.zeros(m)
-    error_val   = np.zeros(m)
+    error_val = np.zeros(m)
 
 # ====================== YOUR CODE HERE ======================
 # Instructions: Fill in this function to return training errors in 
