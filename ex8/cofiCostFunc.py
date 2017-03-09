@@ -36,8 +36,6 @@ def cofiCostFunc(params, Y, R, num_users, num_movies, num_features, Lambda):
     #                 partial derivatives w.r.t. to each element of X
     #        Theta_grad - num_users x num_features matrix, containing the
     #                     partial derivatives w.r.t. to each element of Theta
-
-
     # =============================================================
 
     grad = np.hstack((X_grad.T.flatten(),Theta_grad.T.flatten()))

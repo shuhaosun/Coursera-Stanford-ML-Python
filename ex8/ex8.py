@@ -36,7 +36,7 @@ from show import show
 #  This exercise will help us find possibly faulty (or very fast) machines.
 #
 
-print 'Visualizing example dataset for outlier detection.'
+print('Visualizing example dataset for outlier detection.')
 
 #  The following command loads the dataset. You should now have the
 #  variables X, Xval, yval in your environment
@@ -51,7 +51,7 @@ plt.axis([0, 30, 0, 30])
 plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
 show()
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 
 ## ================== Part 2: Estimate the dataset statistics ===================
@@ -62,7 +62,7 @@ raw_input("Program paused. Press Enter to continue...")
 #  both the overall distribution and where each of the points falls in 
 #  terms of that distribution.
 #
-print 'Visualizing Gaussian fit.'
+print('Visualizing Gaussian fit.')
 
 #  Estimate my and sigma2
 mu, sigma2 = estimateGaussian(X)
@@ -77,7 +77,7 @@ plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
 show()
 
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 ## ================== Part 3: Find Outliers ===================
 #  Now you will find a good epsilon threshold using a cross-validation set
@@ -87,9 +87,9 @@ raw_input("Program paused. Press Enter to continue...")
 pval = multivariateGaussian(Xval, mu, sigma2)
 
 epsilon, F1 = selectThreshold(yval, pval)
-print 'Best epsilon found using cross-validation: %e' % epsilon
-print 'Best F1 on Cross Validation Set:  %f' % F1
-print '   (you should see a value epsilon of about 8.99e-05)'
+print('Best epsilon found using cross-validation: %e' % epsilon)
+print('Best F1 on Cross Validation Set:  %f' % F1)
+print('   (you should see a value epsilon of about 8.99e-05)')
 
 #  Find the outliers in the training set and plot the
 outliers = np.where(p < epsilon, True, False)
@@ -98,7 +98,7 @@ outliers = np.where(p < epsilon, True, False)
 plt.plot(X[outliers, 0], X[outliers, 1], 'ro', lw=2, markersize=10, fillstyle='none', markeredgewidth=1)
 show()
 
-raw_input("Program paused. Press Enter to continue...")
+input('Program paused. Press Enter to continue...')
 
 ## ================== Part 4: Multidimensional Outliers ===================
 #  We will now use the code from the previous part and apply it to a 
@@ -125,10 +125,7 @@ pval = multivariateGaussian(Xval, mu, sigma2)
 #  Find the best threshold
 epsilon, F1 = selectThreshold(yval, pval)
 
-print 'Best epsilon found using cross-validation: %e' % epsilon
-print 'Best F1 on Cross Validation Set:  %f' % F1
-print '# Outliers found: %d' % sum(p < epsilon)
-print '   (you should see a value epsilon of about 1.38e-18)'
-
-
-
+print('Best epsilon found using cross-validation: %e' % epsilon)
+print('Best F1 on Cross Validation Set:  %f' % F1)
+print('# Outliers found: %d' % sum(p < epsilon))
+print('   (you should see a value epsilon of about 1.38e-18)')

@@ -14,11 +14,11 @@ def visualizeFit(X, mu, sigma2):
     """
     n = np.linspace(0,35,71)
     X1 = np.meshgrid(n,n)
-    Z = multivariateGaussian(np.column_stack((X1[0].T.flatten(), X1[1].T.flatten())),mu,sigma2)
+    Z = multivariateGaussian(np.column_stack((X1[0].T.flatten(), X1[1].T.flatten())), mu, sigma2)
     Z = Z.reshape(X1[0].shape)
 
     plt.plot(X[:, 0], X[:, 1],'bx')
     # Do not plot if there are infinities
     if not isinf(np.sum(Z)):
-        plt.contour(X1[0], X1[1], Z, 10.0**np.arange(-20, 0, 3).T)
+        plt.contour(X1[0], X1[1], Z, 10.0 ** np.arange(-20, 0, 3).T)
         show()

@@ -31,7 +31,7 @@ from checkCostFunction import checkCostFunction
 from loadMovieList import loadMovieList
 from normalizeRatings import normalizeRatings
 
-print 'Loading movie ratings dataset.'
+print('Loading movie ratings dataset.')
 
 #  Load data
 data = scipy.io.loadmat('ex8_movies.mat')
@@ -44,7 +44,7 @@ R = data['R'].astype(bool)
 #  rating to movie i
 
 #  From the matrix, we can compute statistics like average rating.
-print 'Average rating for movie 1 (Toy Story): %f / 5' % np.mean(Y[0, R[0, :]])
+print('Average rating for movie 1 (Toy Story): %f / 5' % np.mean(Y[0, R[0, :]]))
 
 #  We can "visualize" the ratings matrix by plotting it with imagesc
 
@@ -54,7 +54,7 @@ plt.ylabel('Movies')
 plt.xlabel('Users')
 show()
 
-raw_input("Program paused. Press Enter to continue...")
+input('Program paused. Press Enter to continue...')
 
 ## ============ Part 2: Collaborative Filtering Cost Function ===========
 #  You will now implement the cost function for collaborative filtering.
@@ -83,9 +83,9 @@ R = R[:num_movies, :num_users]
 J, grad = cofiCostFunc(np.hstack((X.T.flatten(), Theta.T.flatten())), Y, R, num_users, num_movies,
                num_features, 0)
            
-print 'Cost at loaded parameters: %f \n(this value should be about 22.22)' % J
+print('Cost at loaded parameters: %f \n(this value should be about 22.22)' % J)
 
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 
 ## ============== Part 3: Collaborative Filtering Gradient ==============
@@ -93,12 +93,12 @@ raw_input("Program paused. Press Enter to continue...")
 #  the collaborative filtering gradient function. Specifically, you should 
 #  complete the code in cofiCostFunc.m to return the grad argument.
 #  
-print 'Checking Gradients (without regularization) ...'
+print('Checking Gradients (without regularization) ...')
 
 #  Check gradients by running checkNNGradients
 checkCostFunction()
 
-raw_input("Program paused. Press Enter to continue...")
+input('Program paused. Press Enter to continue...')
 
 
 ## ========= Part 4: Collaborative Filtering Cost Regularization ========
@@ -111,9 +111,9 @@ raw_input("Program paused. Press Enter to continue...")
 J, grad = cofiCostFunc(np.hstack((X.T.flatten(), Theta.T.flatten())), Y, R, num_users, num_movies,
                num_features, 1.5)
            
-print 'Cost at loaded parameters (lambda = 1.5): %f \n(this value should be about 31.34)\n' % J
+print('Cost at loaded parameters (lambda = 1.5): %f \n(this value should be about 31.34)\n' % J)
 
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 
 ## ======= Part 5: Collaborative Filtering Gradient Regularization ======
@@ -122,12 +122,12 @@ raw_input("Program paused. Press Enter to continue...")
 #
 
 #  
-print 'Checking Gradients (with regularization) ...'
+print('Checking Gradients (with regularization) ...')
 
 #  Check gradients by running checkNNGradients
 checkCostFunction(1.5)
 
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 
 ## ============== Part 6: Entering ratings for a new user ===============
@@ -160,12 +160,12 @@ my_ratings[182] = 4
 my_ratings[225] = 5
 my_ratings[354] = 5
 
-print 'New user ratings:'
+print('New user ratings:')
 for i in range(len(my_ratings)):
     if my_ratings[i] > 0:
-        print 'Rated %d for %s\n' % (my_ratings[i], movieList[i])
+        print('Rated %d for %s\n' % (my_ratings[i], movieList[i]))
 
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 
 ## ================== Part 7: Learning Movie Ratings ====================
@@ -173,7 +173,7 @@ raw_input("Program paused. Press Enter to continue...")
 #  dataset of 1682 movies and 943 users
 #
 
-print '\nTraining collaborative filtering...'
+print('\nTraining collaborative filtering...')
 
 #  Load data
 data = scipy.io.loadmat('ex8_movies.mat')
@@ -218,9 +218,9 @@ cost = result.fun
 X = theta[:num_movies*num_features].reshape(num_movies, num_features)
 Theta = theta[num_movies*num_features:].reshape(num_users, num_features)
 
-print 'Recommender system learning completed.'
+print('Recommender system learning completed.')
 
-raw_input("Program paused. Press Enter to continue...")  
+input('Program paused. Press Enter to continue...')
 
 ## ================== Part 8: Recommendation for you ====================
 #  After training the model, you can now make recommendations by computing
@@ -238,12 +238,12 @@ post = pre[pre[:,1].argsort()[::-1]]
 r = post[:,1]
 ix = post[:,0]
 
-print '\nTop recommendations for you:'
+print('\nTop recommendations for you:')
 for i in range(10):
     j = int(ix[i])
-    print 'Predicting rating %.1f for movie %s\n' % (my_predictions[j], movieList[j])
+    print('Predicting rating %.1f for movie %s\n' % (my_predictions[j], movieList[j]))
 
-print '\nOriginal ratings provided:'
+print('\nOriginal ratings provided:')
 for i in range(len(my_ratings)):
     if my_ratings[i] > 0:
-        print 'Rated %d for %s\n' % (my_ratings[i], movieList[i])
+        print('Rated %d for %s\n' % (my_ratings[i], movieList[i]))

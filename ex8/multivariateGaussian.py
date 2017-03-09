@@ -16,6 +16,6 @@ def multivariateGaussian(X, mu, Sigma2):
 
     X = X - mu
     p = (2 * np.pi) ** (- k / 2) * np.linalg.det(Sigma2) ** (-0.5) * \
-        np.exp(-0.5 * np.sum(X.dot(np.linalg.pinv(Sigma2))*X, axis=1))
+        np.exp(-0.5 * np.sum(X.dot(np.linalg.pinv(Sigma2)) * X, axis=1))
 
     return p

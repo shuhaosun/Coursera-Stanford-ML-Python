@@ -1,6 +1,7 @@
 import numpy as np
 import math
 
+
 def selectThreshold(yval, pval):
     """
     finds the best
@@ -12,7 +13,7 @@ def selectThreshold(yval, pval):
     bestF1 = 0
 
     stepsize = (np.max(pval) - np.min(pval)) / 1000.0
-    for epsilon in np.arange(np.min(pval),np.max(pval), stepsize):
+    for epsilon in np.arange(np.min(pval), np.max(pval), stepsize):
 
         # ====================== YOUR CODE HERE ======================
         # Instructions: Compute the F1 score of choosing epsilon as the
@@ -23,18 +24,10 @@ def selectThreshold(yval, pval):
         #
         # Note: You can use predictions = (pval < epsilon) to get a binary vector
         #       of 0's and 1's of the outlier predictions
-
-
         # =============================================================
 
         if F1 > bestF1:
-           bestF1 = F1
-           bestEpsilon = epsilon
+            bestF1 = F1
+            bestEpsilon = epsilon
 
     return bestEpsilon, bestF1
-
-
-
-
-
-
