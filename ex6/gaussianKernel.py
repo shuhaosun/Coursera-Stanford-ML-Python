@@ -6,11 +6,11 @@ def gaussianKernel(x1, x2, sigma):
     and returns the value in sim
     """
 
-# Ensure that x1 and x2 are column vectors
-#     x1 = x1.ravel()
-#     x2 = x2.ravel()
+    # Ensure that x1 and x2 are column vectors
+    #     x1 = x1.ravel()
+    #     x2 = x2.ravel()
 
-# You need to return the following variables correctly.
+    # You need to return the following variables correctly.
     sim = 0
 
 # ====================== YOUR CODE HERE ======================
@@ -19,7 +19,5 @@ def gaussianKernel(x1, x2, sigma):
 #               sigma
 #
 #
-
-
 # =============================================================
     return sim

@@ -8,7 +8,7 @@ def dataset3Params(X, y, Xval, yval):
     cross-validation set.
     """
 
-# You need to return the following variables correctly.
+    # You need to return the following variables correctly.
     C = 1
     sigma = 0.3
 
@@ -23,7 +23,5 @@ def dataset3Params(X, y, Xval, yval):
 #  Note: You can compute the prediction error using 
 #        mean(double(predictions ~= yval))
 #
-
-
 # =========================================================================
     return C, sigma

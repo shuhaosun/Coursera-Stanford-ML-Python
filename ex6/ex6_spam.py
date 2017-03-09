@@ -31,7 +31,7 @@ from getVocabList import getVocabList
 #  complete the code in processEmail.m to produce a word indices vector
 #  for a given email.
 
-print 'Preprocessing sample email (emailSample1.txt)'
+print('Preprocessing sample email (emailSample1.txt)')
 
 # Extract Features
 file = open('emailSample1.txt', 'r')
@@ -39,17 +39,17 @@ file_contents = file.readlines()
 word_indices  = processEmail(''.join(file_contents))
 
 # Print Stats
-print 'Word Indices: '
-print word_indices
+print('Word Indices: ')
+print(word_indices)
 
-raw_input("Program paused. Press Enter to continue...")
+input('Program paused. Press Enter to continue...')
 
 ## ==================== Part 2: Feature Extraction ====================
 #  Now, you will convert each email into a vector of features in R^n.
 #  You should complete the code in emailFeatures.m to produce a feature
 #  vector for a given email.
 
-print 'Extracting features from sample email (emailSample1.txt)'
+print('Extracting features from sample email (emailSample1.txt)')
 
 # Extract Features
 file = open('emailSample1.txt')
@@ -58,10 +58,10 @@ word_indices = processEmail(''.join(file_contents))
 features = emailFeatures(word_indices)
 
 # Print Stats
-print 'Length of feature vector: %d'% features.size
-print 'Number of non-zero entries: %d'% sum(features > 0)
+print('Length of feature vector: %d'% features.size)
+print('Number of non-zero entries: %d'% sum(features > 0))
 
-raw_input("Program paused. Press Enter to continue...")
+input('Program paused. Press Enter to continue...')
 
 ## =========== Part 3: Train Linear SVM for Spam Classification ========
 #  In this section, you will train a linear classifier to determine if an
@@ -73,8 +73,8 @@ data = scipy.io.loadmat('spamTrain.mat')
 X = data['X']
 y = data['y'].flatten()
 
-print 'Training Linear SVM (Spam Classification)'
-print '(this may take 1 to 2 minutes) ...'
+print('Training Linear SVM (Spam Classification)')
+print('(this may take 1 to 2 minutes) ...')
 
 C = 0.1
 clf = svm.SVC(C=C, kernel='linear', tol=1e-3, max_iter=200)
@@ -82,7 +82,7 @@ model = clf.fit(X, y)
 
 p = model.predict(X)
 
-print 'Training Accuracy: %f', np.mean(np.double(p == y)) * 100
+print('Training Accuracy: %f', np.mean(np.double(p == y)) * 100)
 
 ## =================== Part 4: Test Spam Classification ================
 #  After training the classifier, we can evaluate it on a test set. We have
@@ -94,11 +94,11 @@ data = scipy.io.loadmat('spamTest.mat')
 Xtest = data['Xtest']
 ytest = data['ytest']
 
-print 'Evaluating the trained Linear SVM on a test set ...'
+print('Evaluating the trained Linear SVM on a test set ...')
 
 p = model.predict(Xtest)
 
-print 'Test Accuracy: %f', np. mean(np.double(p == ytest)) * 100
+print('Test Accuracy: %f', np. mean(np.double(p == ytest)) * 100)
 
 
 ## ================= Part 5: Top Predictors of Spam ====================
@@ -111,17 +111,17 @@ print 'Test Accuracy: %f', np. mean(np.double(p == ytest)) * 100
 
 # Sort the weights and obtain the vocabulary list
 
-t = sorted(list(enumerate(model.coef_[0])),key=lambda e: e[1], reverse=True)
+t = sorted(list(enumerate(model.coef_[0])), key=lambda e: e[1], reverse=True)
 d = OrderedDict(t)
 idx = d.keys()
 weight = d.values()
 vocabList = getVocabList()
 
-print 'Top predictors of spam: '
+print('Top predictors of spam: ')
 for i in range(15):
-    print ' %-15s (%f)' %(vocabList[idx[i]], weight[i])
+    print(' %-15s (%f)' %(vocabList[idx[i]], weight[i]))
 
-print 'Program paused. Press enter to continue.'
+print('Program paused. Press enter to continue.')
 
 ## =================== Part 6: Try Your Own Emails =====================
 #  Now that you've trained the spam classifier, you can use it on your own
@@ -144,6 +144,6 @@ word_indices = processEmail(''.join(file_contents))
 x = emailFeatures(word_indices)
 p = model.predict(x)
 
-print 'Processed %s\n\nSpam Classification: %d' % (filename, p)
-print '(1 indicates spam, 0 indicates not spam)'
+print('Processed %s\n\nSpam Classification: %d' % (filename, p))
+print('(1 indicates spam, 0 indicates not spam)')
 

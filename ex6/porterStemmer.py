@@ -29,6 +29,7 @@ release 2: July 2008
 
 import sys
 
+
 class PorterStemmer:
 
     def __init__(self):
