@@ -17,11 +17,11 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
     vector of centroid assignments (i.e. each entry in range [1..K])
     """
 
-# Plot the data if we are plotting progress
+    # Plot the data if we are plotting progress
     if plot_progress:
         plt.figure()
 
-# Initialize values
+    # Initialize values
     m, n = X.shape
     K = len(initial_centroids)
     centroids = initial_centroids
@@ -29,11 +29,12 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
     idx = np.zeros(m)
     c = itertools.cycle('012')
     rgb = np.eye(3)
-# Run K-Means
+
+    # Run K-Means
     for i in range(max_iters):
     
         # Output progress
-        print 'K-Means iteration %d/%d...' % (i, max_iters)
+        print('K-Means iteration %d/%d...' % (i, max_iters))
 
         # For each example in X, assign it to the closest centroid
         _, idx = findClosestCentroids(X, centroids)
@@ -46,10 +47,10 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
             previous_centroids = centroids
             # raw_input("Press Enter to continue...")
 
-    # Given the memberships, compute new centroids
+        # Given the memberships, compute new centroids
         centroids = computeCentroids(X, idx, K)
 
-# Hold off if we are plotting progress
+    # Hold off if we are plotting progress
     if plot_progress:
         pass
     # hold off

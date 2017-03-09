@@ -39,7 +39,7 @@ from show import show
 #  We start this exercise by using a small dataset that is easily to
 #  visualize
 
-print 'Visualizing example dataset for PCA.'
+print('Visualizing example dataset for PCA.')
 #  The following command loads the dataset. You should now have the 
 #  variable X in your environment
 data = scipy.io.loadmat('ex7data1.mat')
@@ -51,13 +51,13 @@ plt.axis([0.5, 6.5, 2, 8])
 plt.axis('equal')
 show()
 
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 ## =============== Part 2: Principal Component Analysis ===============
 #  You should now implement PCA, a dimension reduction technique. You
 #  should complete the code in pca.m
 #
-print 'Running PCA on example dataset.'
+print('Running PCA on example dataset.')
 
 #  Before running PCA, it is important to first normalize X
 X_norm, mu, sigma = featureNormalize(X)
@@ -74,11 +74,11 @@ plt.plot([mu[0], mu2[0, 0]], [mu[1], mu2[0, 1]], '-k', lw=2)
 plt.plot([mu[0], mu2[1, 0]], [mu[1], mu2[1, 1]], '-k', lw=2)
 show()
 
-print 'Top eigenvector: '
-print ' U(:,1) = %f %f ', U[0,0], U[1,0]
-print '(you should expect to see -0.707107 -0.707107)'
+print('Top eigenvector: ')
+print(' U(:,1) = %f %f ', U[0,0], U[1,0])
+print('(you should expect to see -0.707107 -0.707107)')
 
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 
 ## =================== Part 3: Dimension Reduction ===================
@@ -89,7 +89,7 @@ raw_input('Program paused. Press Enter to continue...')
 #
 #  You should complete the code in projectData.m
 #
-print 'Dimension reduction on example dataset.'
+print('Dimension reduction on example dataset.')
 
 #  Plot the normalized dataset (returned from pca)
 plt.figure()
@@ -101,12 +101,12 @@ show()
 #  Project the data onto K = 1 dimension
 K = 1
 Z = projectData(X_norm, U, K)
-print 'Projection of the first example: %f', Z[0]
-print '(this value should be about 1.481274)'
+print('Projection of the first example: %f', Z[0])
+print('(this value should be about 1.481274)')
 
 X_rec  = recoverData(Z, U, K)
-print 'Approximation of the first example: %f %f'% (X_rec[0, 0], X_rec[0, 1])
-print '(this value should be about  -1.047419 -1.047419)'
+print('Approximation of the first example: %f %f'% (X_rec[0, 0], X_rec[0, 1]))
+print('(this value should be about  -1.047419 -1.047419)')
 
 #  Draw lines connecting the projected points to the original points
 plt.scatter(X_rec[:, 0], X_rec[:, 1], marker='o', color='r', facecolor='none', lw=1.0)
@@ -114,13 +114,13 @@ for i in range(len(X_norm)):
     plt.plot([X_norm[i, 0], X_rec[i, 0]], [X_norm[i, 1], X_rec[i, 1]], '--k')
 
 show()
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 ## =============== Part 4: Loading and Visualizing Face Data =============
 #  We start the exercise by first loading and visualizing the dataset.
 #  The following code will load the dataset into your environment
 #
-print 'Loading face dataset.'
+print('Loading face dataset.')
 
 #  Load Face dataset
 data = scipy.io.loadmat('ex7faces.mat')
@@ -129,13 +129,13 @@ X = data['X']
 #  Display the first 100 faces in the dataset
 displayData(X[0:100, :])
 
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 ## =========== Part 5: PCA on Face Data: Eigenfaces  ===================
 #  Run PCA and visualize the eigenvectors which are in this case eigenfaces
 #  We display the first 36 eigenfaces.
 #
-print 'Running PCA on face dataset.\n(this might take a minute or two ...)\n\n'
+print('Running PCA on face dataset.\n(this might take a minute or two ...)\n\n')
 
 #  Before running PCA, it is important to first normalize X by subtracting 
 #  the mean value from each feature
@@ -147,27 +147,27 @@ U, S, V = pca(X_norm)
 #  Visualize the top 36 eigenvectors found
 displayData(U[:, 1:36].T)
 
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 ## ============= Part 6: Dimension Reduction for Faces =================
 #  Project images to the eigen space using the top k eigenvectors 
 #  If you are applying a machine learning algorithm 
-print 'Dimension reduction for face dataset.'
+print('Dimension reduction for face dataset.')
 
 K = 100
 Z = projectData(X_norm, U, K)
 
-print 'The projected data Z has a size of: '
-print '%d %d'% Z.shape
+print('The projected data Z has a size of: ')
+print('%d %d'% Z.shape)
 
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 ## ==== Part 7: Visualization of Faces after PCA Dimension Reduction ====
 #  Project images to the eigen space using the top K eigen vectors and 
 #  visualize only using those K dimensions
 #  Compare to the original input, which is also displayed
 
-print 'Visualizing the projected (reduced dimension) faces.'
+print('Visualizing the projected (reduced dimension) faces.')
 
 K = 100
 X_rec  = recoverData(Z, U, K)
@@ -180,11 +180,11 @@ plt.axis('equal')
 
 # Display reconstructed data from only k eigenfaces
 plt.subplot(1, 2, 2)
-displayData(X_rec[:100,:])
+displayData(X_rec[:100, :])
 plt.title('Recovered faces')
 plt.axis('equal')
 show()
-raw_input('Program paused. Press Enter to continue...')  
+input('Program paused. Press Enter to continue...')
 
 
 ## === Part 8(a): Optional (ungraded) Exercise: PCA for Visualization ===
@@ -222,14 +222,14 @@ xs = Xs[:, 0]
 ys = Xs[:, 1]
 zs = Xs[:, 2]
 cmap = plt.get_cmap("jet")
-idxn = sel.astype('float')/max(sel.astype('float'))
+idxn = sel.astype('float') / max(sel.astype('float'))
 colors = cmap(idxn)
 # ax = Axes3D(fig)
 ax.scatter3D(xs, ys, zs=zs, edgecolors=colors, marker='o', facecolors='none', lw=0.4, s=10)
 
 plt.title('Pixel dataset plotted in 3D. Color shows centroid memberships')
 show()
-raw_input('Program paused. Press Enter to continue...')
+input('Program paused. Press Enter to continue...')
 
 ## === Part 8(b): Optional (ungraded) Exercise: PCA for Visualization ===
 # Use PCA to project this cloud to 2D for visualization
@@ -250,4 +250,4 @@ idxs = np.array([idx[s] for s in sel])
 plotDataPoints(zs, idxs)
 plt.title('Pixel dataset plotted in 2D, using PCA for dimensionality reduction')
 show()
-raw_input('Program paused. Press Enter to continue...')
+input('Program paused. Press Enter to continue...')

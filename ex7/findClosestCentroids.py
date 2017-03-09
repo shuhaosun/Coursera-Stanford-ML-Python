@@ -7,10 +7,10 @@ def findClosestCentroids(X, centroids):
     vector of centroid assignments (i.e. each entry in range [1..K])
     """
 
-# Set K
+    # Set K
     K = len(centroids)
 
-# You need to return the following variables correctly.
+    # You need to return the following variables correctly.
     idx = np.zeros(X.shape[0])
 
 # ====================== YOUR CODE HERE ======================
@@ -21,8 +21,6 @@ def findClosestCentroids(X, centroids):
 #               range 1..K
 #
 # Note: You can use a for-loop over the examples to compute this.
-
-
 # =============================================================
 
     return val, idx

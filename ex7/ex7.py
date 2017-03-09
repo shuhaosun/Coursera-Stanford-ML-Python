@@ -36,45 +36,45 @@ from runkMeans import runkMeans
 from kMeansInitCentroids import kMeansInitCentroids
 from show import show
 
-print 'Finding closest centroids.'
+print('Finding closest centroids.')
 
 # Load an example dataset that we will be using
 data = scipy.io.loadmat('ex7data2.mat')
 X = data['X']
 
 # Select an initial set of centroids
-K = 3 # 3 Centroids
+K = 3  # 3 Centroids
 initial_centroids = np.array([[3, 3], [6, 2], [8, 5]])
 
 # Find the closest centroids for the examples using the
 # initial_centroids
 val, idx = findClosestCentroids(X, initial_centroids)
 
-print 'Closest centroids for the first 3 examples:'
-print idx[0:3].tolist()
-print '(the closest centroids should be 0, 2, 1 respectively)'
+print('Closest centroids for the first 3 examples:')
+print(idx[0:3].tolist())
+print('(the closest centroids should be 0, 2, 1 respectively)')
 
-raw_input("Program paused. Press Enter to continue...") 
+input('Program paused. Press Enter to continue...')
 
 ## ===================== Part 2: Compute Means =========================
 #  After implementing the closest centroids function, you should now
 #  complete the computeCentroids function.
 #
-print 'Computing centroids means.'
+print('Computing centroids means.')
 
 #  Compute means based on the closest centroids found in the previous part.
 centroids = computeCentroids(X, idx, K)
 
-print 'Centroids computed after initial finding of closest centroids:'
+print('Centroids computed after initial finding of closest centroids:')
 for c in centroids:
-    print c
+    print(c)
 
-print '(the centroids should be'
-print '   [ 2.428301 3.157924 ]'
-print '   [ 5.813503 2.633656 ]'
-print '   [ 7.119387 3.616684 ]'
+print('(the centroids should be')
+print('   [ 2.428301 3.157924 ]')
+print('   [ 5.813503 2.633656 ]')
+print('   [ 7.119387 3.616684 ]')
 
-raw_input("Program paused. Press Enter to continue...") 
+input('Program paused. Press Enter to continue...')
 
 
 ## =================== Part 3: K-Means Clustering ======================
@@ -83,7 +83,7 @@ raw_input("Program paused. Press Enter to continue...")
 #  kMeans algorithm. In this part, you will run the K-Means algorithm on
 #  the example dataset we have provided. 
 #
-print 'Running K-Means clustering on example dataset.'
+print('Running K-Means clustering on example dataset.')
 
 # Load an example dataset
 data = scipy.io.loadmat('ex7data2.mat')
@@ -102,9 +102,9 @@ initial_centroids = [[3, 3], [6, 2], [8, 5]]
 # Run K-Means algorithm. The 'true' at the end tells our function to plot
 # the progress of K-Means
 centroids, idx = runkMeans(X, initial_centroids, max_iters, True)
-print 'K-Means Done.'
+print('K-Means Done.')
 
-raw_input("Program paused. Press Enter to continue...") 
+input('Program paused. Press Enter to continue...')
 
 ## ============= Part 4: K-Means Clustering on Pixels ===============
 #  In this exercise, you will use K-Means to compress an image. To do this,
@@ -114,7 +114,7 @@ raw_input("Program paused. Press Enter to continue...")
 #  You should now complete the code in kMeansInitCentroids.m
 #
 
-print 'Running K-Means clustering on pixels from an image.'
+print('Running K-Means clustering on pixels from an image.')
 
 #  Load an image of a bird
 A = scipy.misc.imread('bird_small.png')
@@ -122,7 +122,7 @@ A = scipy.misc.imread('bird_small.png')
 # If imread does not work for you, you can try instead
 #   load ('bird_small.mat')
 
-A = A / 255.0 # Divide by 255 so that all values are in the range 0 - 1
+A = A / 255.0  # Divide by 255 so that all values are in the range 0 - 1
 
 # Size of the image
 img_size = A.shape
@@ -145,7 +145,7 @@ initial_centroids = kMeansInitCentroids(X, K)
 # Run K-Means
 centroids, idx = runkMeans(X, initial_centroids, max_iters)
 
-raw_input("Program paused. Press Enter to continue...") 
+input('Program paused. Press Enter to continue...')
 
 
 ## ================= Part 5: Image Compression ======================
@@ -153,7 +153,7 @@ raw_input("Program paused. Press Enter to continue...")
 #  compress an image. To do this, we first find the closest clusters for
 #  each example. After that, we 
 
-print 'Applying K-Means to compress an image.'
+print('Applying K-Means to compress an image.')
 
 # Find closest cluster members
 _, idx = findClosestCentroids(X, centroids)
@@ -180,4 +180,4 @@ plt.imshow(X_recovered)
 plt.title('Compressed, with %d colors.' % K)
 show()
 
-raw_input("Program paused. Press Enter to continue...")
+input('Program paused. Press Enter to continue...')

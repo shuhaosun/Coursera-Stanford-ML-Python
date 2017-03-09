@@ -19,7 +19,5 @@ def pca(X):
     # Note: When computing the covariance matrix, remember to divide by m (the
     #       number of examples).
     #
-
-
-# =========================================================================
+    # =========================================================================
     return U, S, V

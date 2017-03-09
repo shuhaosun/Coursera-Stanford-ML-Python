@@ -24,12 +24,12 @@ srcs = [
 
 def output(part_id):
     # Random Test Cases
-    X = np.sin(np.arange(1,166)).reshape((11, 15)).T
-    Z = np.cos(np.arange(1,122)).reshape((11, 11)).T
+    X = np.sin(np.arange(1, 166)).reshape((11, 15)).T
+    Z = np.cos(np.arange(1, 122)).reshape((11, 11)).T
     C = Z[:5, :]
-    idx = (np.mod(np.arange(1,16), 3)).T
+    idx = (np.mod(np.arange(1, 16), 3)).T
 
-    fname = srcs[part_id-1].rsplit('.',1)[0]
+    fname = srcs[part_id-1].rsplit('.', 1)[0]
     mod = __import__(fname, fromlist=[fname], level=1)
     func = getattr(mod, fname)
 
@@ -53,6 +53,6 @@ s = Submission(homework, part_names, srcs, output)
 try:
     s.submit()
 except Exception as ex:
-    template = "An exception of type {0} occured. Messsage:\n{1!r}"
+    template = 'An exception of type {0} occured. Messsage:\n{1!r}'
     message = template.format(type(ex).__name__, ex.args)
-    print message
+    print(message)
