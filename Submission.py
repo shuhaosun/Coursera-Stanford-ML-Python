@@ -1,5 +1,5 @@
-from urllib import urlencode
-from urllib2 import urlopen
+from urllib.parse import urlencode
+from urllib.request import urlopen
 from json import loads, dumps
 from collections import OrderedDict
 import numpy as np
@@ -22,11 +22,11 @@ class Submission():
         self.login_prompt()
 
         parts = OrderedDict()
-        for part_id, _ in enumerate(self.__srcs,1):
+        for part_id, _ in enumerate(self.__srcs, 1):
             parts[str(part_id)] = {'output': self.__output(part_id)}
 
         result, response = self.request(parts)
-        response = loads(response)
+        response = loads(response.decode('utf-8'))
         try:
             print(response['errorMessage'])
             return
@@ -40,7 +40,7 @@ class Submission():
             partFeedback = response['partFeedbacks'][part]
             partEvaluation = response['partEvaluations'][part]
             score = '%d / %3d' % (partEvaluation['score'], partEvaluation['maxScore'])
-            print('== %43s | %9s | %-s' % (self.__part_names[int(part)-1], score, partFeedback))
+            print('== %43s | %9s | %-s' % (self.__part_names[int(part) - 1], score, partFeedback))
 
         evaluation = response['evaluation']
 
@@ -80,8 +80,7 @@ class Submission():
             'secret': self.__password,
             'parts': parts,
             'submitterEmail': self.__login}
-
-        params = urlencode({'jsonBody': dumps(params)})
+        params = urlencode({'jsonBody': dumps(params)}).encode('utf-8')
         f = urlopen(self.__submit_url, params)
         try:
             return 0, f.read()
