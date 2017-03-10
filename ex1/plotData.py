@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def plotData(X, y):
+def plotData(x, y):
     """
     plots the data points and gives the figure axes labels of
     population and profit.

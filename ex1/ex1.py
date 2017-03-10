@@ -46,21 +46,19 @@ input('Program paused. Press Enter to continue...')
 # ======================= Part 2: Plotting =======================
 data = np.loadtxt('ex1data1.txt', delimiter=',')
 m = data.shape[0]
+X = np.vstack(zip(np.ones(m), data[:, 0]))
 y = data[:, 1]
-X = data[:, 0]
 
 # Plot Data
 # Note: You have to complete the code in plotData.py
 print('Plotting Data ...')
-plotData(X, y)
+plotData(x=data[:, 0], y=data[:, 1])
 show()
 
 input('Program paused. Press Enter to continue...')
 
 # =================== Part 3: Gradient descent ===================
 print('Running Gradient Descent ...')
-# Add a column of ones to x
-X = np.vstack(zip(np.ones(m), X))
 theta = np.zeros(2)
 
 # compute and display initial cost
@@ -80,7 +78,7 @@ print('%s %s \n' % (theta[0], theta[1]))
 
 # Plot the linear fit
 plt.figure()
-plotData(data)
+plotData(x=data[:, 0], y=data[:, 1])
 plt.plot(X[:, 1], X.dot(theta), '-', label='Linear regression')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
@@ -153,7 +151,7 @@ print('For population = 35,000, we predict a profit of {:.4f}'.format(predict1 *
 print('For population = 70,000, we predict a profit of {:.4f}'.format(predict2 * 10000))
 
 plt.figure()
-plotData(data)
+plotData(x=data[:, 0], y=data[:, 1])
 plt.plot(X[:, 1],  X.dot(regr.coef_), '-', color='black', label='Linear regression wit scikit')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
