@@ -35,7 +35,7 @@ def output(part_id):
     Y2 = np.power(Y1, 0.5) + Y1
 
     fname = srcs[part_id - 1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:
@@ -45,7 +45,7 @@ def output(part_id):
     elif part_id == 3:
         return sprintf('%0.5f ', func(X1, Y1, np.array([0.5, -0.5]), 0.01, 10))
     elif part_id == 4:
-        return sprintf('%0.5f ', func(X2[:,1:4]))
+        return sprintf('%0.5f ', func(X2[:, 1:4]))
     elif part_id == 5:
         return sprintf('%0.5f ', func(X2, Y2, np.array([0.1, 0.2, 0.3, 0.4])))
     elif part_id == 6:
