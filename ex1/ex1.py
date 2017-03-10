@@ -46,19 +46,21 @@ input('Program paused. Press Enter to continue...')
 # ======================= Part 2: Plotting =======================
 data = np.loadtxt('ex1data1.txt', delimiter=',')
 m = data.shape[0]
-X = np.vstack(zip(np.ones(m),data[:,0]))
 y = data[:, 1]
+X = data[:, 0]
 
 # Plot Data
 # Note: You have to complete the code in plotData.py
 print('Plotting Data ...')
-plotData(data)
+plotData(X, y)
 show()
 
 input('Program paused. Press Enter to continue...')
 
 # =================== Part 3: Gradient descent ===================
 print('Running Gradient Descent ...')
+# Add a column of ones to x
+X = np.vstack(zip(np.ones(m), X))
 theta = np.zeros(2)
 
 # compute and display initial cost
