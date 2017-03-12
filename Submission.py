@@ -23,8 +23,11 @@ class Submission():
 
         parts = OrderedDict()
         for part_id, _ in enumerate(self.__srcs, 1):
-            parts[str(part_id)] = {'output': self.__output(part_id)}
-
+            try:
+                parts[str(part_id)] = {'output': self.__output(part_id)}
+            except:
+                parts[str(part_id)] = {'output': '0'}
+        
         result, response = self.request(parts)
         response = loads(response.decode('utf-8'))
         try:
