@@ -35,7 +35,6 @@ def plotBoundary(theta, X, y):
     show()
 
 
-
 # Initialization
 
 # Load Data

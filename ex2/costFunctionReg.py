@@ -1,3 +1,4 @@
+import numpy as np
 from costFunction import costFunction
 
 
@@ -11,11 +12,11 @@ def costFunctionReg(theta, X, y, Lambda):
     # Initialize some useful values
     m = len(y)   # number of training examples
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the cost of a particular choice of theta.
-#               You should set J to the cost.
-#               Compute the partial derivatives and set grad to the partial
-#               derivatives of the cost w.r.t. each parameter in theta
-# =============================================================
+    # ====================== YOUR CODE HERE ======================
+    # Instructions: Compute the cost of a particular choice of theta.
+    #               You should set J to the cost.
+    #               Compute the partial derivatives and set grad to the partial
+    #               derivatives of the cost w.r.t. each parameter in theta
+    # =============================================================
 
     return J

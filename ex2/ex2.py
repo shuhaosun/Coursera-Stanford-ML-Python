@@ -11,6 +11,8 @@ from gradientFunction import gradientFunction
 from sigmoid import sigmoid
 from predict import predict
 from show import show
+from ml import plotData, plotDecisionBoundary
+
 
 ## Machine Learning Online Class - Exercise 2: Logistic Regression
 #
@@ -20,7 +22,7 @@ from show import show
 #  This file contains code that helps you get started on the second part
 #  of the exercise which covers regularization with logistic regression.
 #
-#  You will need to complete the following functions in this exericse:
+#  You will need to complete the following functions in this exercise:
 #
 #     sigmoid.py
 #     costFunction.py
@@ -37,7 +39,7 @@ from show import show
 #  or any other files other than those mentioned above.
 #
 
-from ml import plotData, plotDecisionBoundary
+
 # Load Data
 #  The first two columns contains the exam scores and the third column
 #  contains the label.

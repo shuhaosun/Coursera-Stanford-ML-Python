@@ -1,4 +1,4 @@
-from numpy import e
+import numpy as np
 
 
 def sigmoid(z):

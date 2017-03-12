@@ -1,5 +1,5 @@
+import numpy as np
 from sigmoid import sigmoid
-from numpy import squeeze, asarray
 
 
 def gradientFunction(theta, X, y):
@@ -12,10 +12,10 @@ def gradientFunction(theta, X, y):
 
     m = len(y)   # number of training examples
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the gradient of a particular choice of theta.
-#               Compute the partial derivatives and set grad to the partial
-#               derivatives of the cost w.r.t. each parameter in theta
-# =============================================================
+    # ====================== YOUR CODE HERE ======================
+    # Instructions: Compute the gradient of a particular choice of theta.
+    #               Compute the partial derivatives and set grad to the partial
+    #               derivatives of the cost w.r.t. each parameter in theta
+    # =============================================================
 
     return grad

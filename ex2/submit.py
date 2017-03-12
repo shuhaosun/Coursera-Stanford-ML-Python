@@ -28,12 +28,12 @@ srcs = [
 
 def output(part_id):
     X = np.column_stack((np.ones(20),
-                          (np.exp(1) * np.sin(np.linspace(1, 20, 20))),
-                          (np.exp(0.5) * np.cos(np.linspace(1, 20, 20)))))
+                        (np.exp(1) * np.sin(np.linspace(1, 20, 20))),
+                        (np.exp(0.5) * np.cos(np.linspace(1, 20, 20)))))
     Y = np.sin(X[:, 0] + X[:, 1]) > 0
 
     fname = srcs[part_id - 1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:

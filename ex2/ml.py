@@ -4,7 +4,7 @@ from pandas import Series
 from mpl_toolkits.mplot3d import axes3d
 
 
-def plotData(X,y):
+def plotData(X, y):
     pos = X[np.where(y == 1, True, False).flatten()]
     neg = X[np.where(y == 0, True, False).flatten()]
     plt.plot(pos[:, 0], pos[:, 1], '+', markersize=7, markeredgecolor='black', markeredgewidth=2)
