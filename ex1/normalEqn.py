@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def normalEqn(X,y):
+def normalEqn(X, y):
     """ Computes the closed-form solution to linear regression
        normalEqn(X,y) computes the closed-form solution to linear
        regression using the normal equations.

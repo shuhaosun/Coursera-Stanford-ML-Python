@@ -106,11 +106,11 @@ for i in range(theta0_vals.size):
     for j in range(theta1_vals.size):
         t = np.array([theta0_vals[i], theta1_vals[j]])
         col.append(computeCost(X, y, t.T))
-    J_vals = np.column_stack((J_vals,col))
+    J_vals = np.column_stack((J_vals, col))
 
 # Because of the way meshgrids work in the surf command, we need to
 # transpose J_vals before calling surf, or else the axes will be flipped
-J_vals = J_vals[:,1:].T
+J_vals = J_vals[:, 1:].T
 theta0_vals, theta1_vals = np.meshgrid(theta0_vals, theta1_vals)
 
 # Surface plot
@@ -152,7 +152,7 @@ print('For population = 70,000, we predict a profit of {:.4f}'.format(predict2 *
 
 plt.figure()
 plotData(x=data[:, 0], y=data[:, 1])
-plt.plot(X[:, 1],  X.dot(regr.coef_), '-', color='black', label='Linear regression wit scikit')
+plt.plot(X[:, 1],  X.dot(regr.coef_), '-', color='black', label='Linear regression with scikit')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
 
