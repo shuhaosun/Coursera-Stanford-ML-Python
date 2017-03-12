@@ -25,9 +25,10 @@ class Submission():
         for part_id, _ in enumerate(self.__srcs, 1):
             try:
                 parts[str(part_id)] = {'output': self.__output(part_id)}
-            except:
+            except Exception as e:
+                print('Error in part {}: {}'.format(part_id, e))
                 parts[str(part_id)] = {'output': '0'}
-        
+
         result, response = self.request(parts)
         response = loads(response.decode('utf-8'))
         try:
