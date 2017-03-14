@@ -13,6 +13,7 @@ from show import show
 from costFunctionReg import costFunctionReg
 from gradientFunctionReg import gradientFunctionReg
 from sigmoid import sigmoid
+from predict import predict
 
 
 def optimize(Lambda):
@@ -97,14 +98,14 @@ input('Program paused. Press Enter to continue...')
 plotBoundary(theta, X, y)
 
 # Compute accuracy on our training set
-p = np.round(sigmoid(X.dot(theta)))
-acc = np.mean(np.where(p == y.T, 1, 0)) * 100
+p = predict(theta, X)
+acc = np.mean(np.where(p == y, 1, 0)) * 100
 print('Train Accuracy: %f' % acc)
 
 input('Program paused. Press Enter to continue...')
 
-# ============= Part 3: Optional Exercises =============
 
+# ============= Part 3: Optional Exercises =============
 
 for Lambda in np.arange(0.0, 10.1, 1.0):
     result = optimize(Lambda)
