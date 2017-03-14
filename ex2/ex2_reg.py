@@ -18,7 +18,7 @@ from sigmoid import sigmoid
 def optimize(Lambda):
 
     result = minimize(costFunctionReg, initial_theta, method='L-BFGS-B',
-                      jac=gradientFunctionReg, args=(X.as_matrix(), y, Lambda),
+                      jac=gradientFunctionReg, args=(X, y, Lambda),
                       options={'gtol': 1e-4, 'disp': False, 'maxiter': 1000})
 
     return result
@@ -26,7 +26,7 @@ def optimize(Lambda):
 
 # Plot Boundary
 def plotBoundary(theta, X, y):
-    plotDecisionBoundary(theta, X.values, y.values)
+    plotDecisionBoundary(theta, X, y)
     plt.title(r'$\lambda$ = ' + str(Lambda))
 
     # Labels and Legend
@@ -41,11 +41,12 @@ def plotBoundary(theta, X, y):
 #  The first two columns contains the X values and the third column
 #  contains the label (y).
 
-data = pd.read_csv('ex2data2.txt', header=None, names=[1, 2, 3])
-X = data[[1, 2]]
-y = data[[3]]
+# data = pd.read_csv('ex2data2.txt', header=None, names=[1, 2, 3])
+data = np.loadtxt('ex2data2.txt', delimiter=',')
+X = data[:, 0:2]
+y = data[:, 2]
 
-plotData(X.values, y.values)
+plotData(X, y)
 
 # Labels and Legend
 plt.xlabel('Microchip Test 1')
@@ -60,7 +61,10 @@ input('Program paused. Press Enter to continue...')
 
 # Note that mapFeature also adds a column of ones for us, so the intercept
 # term is handled
+X = pd.DataFrame(X)
 X = X.apply(mapFeature, axis=1)
+# convert back to numpy ndarray
+X = X.values
 
 # Initialize fitting parameters
 initial_theta = np.zeros(X.shape[1])
