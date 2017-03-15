@@ -37,16 +37,16 @@ def displayData(X):
             max_val = np.max(np.abs(X[curr_ex, :]))
             rows = [pad + j * (example_height + pad) + x for x in np.arange(example_height + 1)]
             cols = [pad + i * (example_width + pad) + x for x in np.arange(example_width + 1)]
-            display_array[min(rows):max(rows), min(cols):max(cols)] = X[curr_ex, :].reshape(example_height, example_width) / max_val
+            display_array[min(rows):max(rows), min(cols):max(cols)] = (X[curr_ex, :].
+                                                                       reshape(example_height, example_width) / max_val)
             curr_ex = curr_ex + 1
         if curr_ex > m:
             break
 
-# Display Image
+    # Display Image
     display_array = display_array.astype('float32')
     plt.imshow(display_array.T)
     plt.set_cmap('gray')
-# Do not show axis
+    # Do not show axis
     plt.axis('off')
     show()
-
