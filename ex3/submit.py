@@ -1,4 +1,6 @@
 import numpy as np
+import sys
+sys.path.append('../ex2/')
 
 from Submission import Submission
 from Submission import sprintf
@@ -44,7 +46,7 @@ def output(part_id):
     t2 = np.cos(np.array(range(1, 40, 2)).reshape(5, 4).T)
 
     fname = srcs[part_id - 1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:

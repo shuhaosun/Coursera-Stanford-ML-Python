@@ -2,6 +2,8 @@ import scipy.io
 import numpy as np
 from matplotlib import use
 use('TkAgg')
+import sys
+sys.path.append('../ex2/')
 
 from oneVsAll import oneVsAll
 from predictOneVsAll import predictOneVsAll
@@ -13,7 +15,7 @@ from displayData import displayData
 # 
 #  This file contains code that helps you get started on the
 #  linear exercise. You will need to complete the following functions 
-#  in this exericse:
+#  in this exercise:
 #
 #     lrCostFunction.m (logistic regression cost function)
 #     oneVsAll.m
@@ -37,7 +39,7 @@ num_labels = 10
 # Load Training Data
 print('Loading and Visualizing Data ...')
 
-data = scipy.io.loadmat('ex3data1.mat') # training data stored in arrays X, y
+data = scipy.io.loadmat('ex3data1.mat')  # training data stored in arrays X, y
 X = data['X']
 y = data['y']
 m, _ = X.shape
@@ -68,7 +70,6 @@ input('Program paused. Press Enter to continue...')
 #  After ...
 
 pred = predictOneVsAll(all_theta, X)
-
 accuracy = np.mean(np.double(pred == np.squeeze(y))) * 100
 print('\nTraining Set Accuracy: %f\n' % accuracy)
 
