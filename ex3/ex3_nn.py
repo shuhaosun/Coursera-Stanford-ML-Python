@@ -74,7 +74,7 @@ Theta2 = data['Theta2']
 
 pred = predict(Theta1, Theta2, X)
 
-print('Training Set Accuracy: %f\n', np.mean(np.double(pred == np.squeeze(y))) * 100)
+print('Training Set Accuracy: %f\n' % (np.mean(np.double(pred == np.squeeze(y))) * 100))
 
 input('Program paused. Press Enter to continue...')
 
