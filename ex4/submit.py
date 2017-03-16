@@ -32,7 +32,7 @@ def output(part_id):
     t = np.hstack((t1.T.ravel(), t2.T.ravel()))
 
     fname = srcs[part_id - 1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:
