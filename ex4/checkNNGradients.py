@@ -7,11 +7,12 @@ from nnCostFunction import nnCostFunction
 
 def checkNNGradients(Lambda=0):
 
-    """Creates a small neural network to check the
-    backpropagation gradients, it will output the analytical gradients
-    produced by your backprop code and the numerical gradients (computed
-    using computeNumericalGradient). These two gradient computations should
-    result in very similar values.
+    """
+        Creates a small neural network to check the
+        backpropagation gradients, it will output the analytical gradients
+        produced by your backprop code and the numerical gradients (computed
+        using computeNumericalGradient). These two gradient computations should
+        result in very similar values.
     """
 
     input_layer_size = 3
@@ -24,15 +25,16 @@ def checkNNGradients(Lambda=0):
     Theta2 = debugInitializeWeights(num_labels, hidden_layer_size)
 
     # Reusing debugInitializeWeights to generate X
-    X  = debugInitializeWeights(m, input_layer_size - 1)
-    y  = np.mod(range(1, m+1), num_labels)
+    X = debugInitializeWeights(m, input_layer_size - 1)
+    y = np.mod(range(1, m + 1), num_labels)
 
     # Unroll parameters
     nn_params = np.hstack((Theta1.T.ravel(), Theta2.T.ravel()))
 
     # Short hand for cost function
 
-    costFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size, num_labels, X, y, Lambda)
+    costFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size,
+                                        num_labels, X, y, Lambda)
 
     numgrad = computeNumericalGradient(costFunc, nn_params)
     grad = costFunc(nn_params)[1]
@@ -47,7 +49,7 @@ def checkNNGradients(Lambda=0):
     # Evaluate the norm of the difference between two solutions.
     # If you have a correct implementation, and assuming you used EPSILON = 0.0001
     # in computeNumericalGradient.m, then diff below should be less than 1e-9
-    diff = np.linalg.norm(numgrad-grad)/np.linalg.norm(numgrad+grad)
+    diff = np.linalg.norm(numgrad - grad) / np.linalg.norm(numgrad + grad)
 
     print('If your backpropagation implementation is correct, then\n '
           'the relative difference will be small (less than 1e-9). \n'

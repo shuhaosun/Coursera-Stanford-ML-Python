@@ -7,9 +7,9 @@ def sigmoidGradient(z):
     vector. In particular, if z is a vector or matrix, you should return
     the gradient for each element."""
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the gradient of the sigmoid function evaluated at
-#               each value of z (z can be a matrix, vector or scalar).
-# =============================================================
+    # ====================== YOUR CODE HERE ======================
+    # Instructions: Compute the gradient of the sigmoid function evaluated at
+    #               each value of z (z can be a matrix, vector or scalar).
+    # =============================================================
 
     return g
