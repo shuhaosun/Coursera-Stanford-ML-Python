@@ -9,12 +9,13 @@ def linearRegCostFunction(X, y, theta, Lambda):
     # Initialize some useful values
     m = y.size  # number of training examples
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the cost and gradient of regularized linear 
-#               regression for a particular choice of theta.
-#
-#               You should set J to the cost and grad to the gradient.
-#
-# =========================================================================
+    # ====================== YOUR CODE HERE ===================================
+    # Instructions: Compute the cost and gradient of regularized linear
+    #               regression for a particular choice of theta.
+    #
+    #               You should set J to the cost and grad to the gradient.
+    #
+    # =========================================================================
 
     return J, grad
+

@@ -10,7 +10,7 @@ from featureNormalize import featureNormalize
 from plotFit import plotFit
 from validationCurve import validationCurve
 
-## Machine Learning Online Class
+#  Machine Learning Online Class
 #  Exercise 5 | Regularized Linear Regression and Bias-Variance
 #
 #  Instructions
@@ -25,13 +25,11 @@ from validationCurve import validationCurve
 #
 #  For this exercise, you will not need to change any code in this file,
 #  or any other files other than those mentioned above.
-#
 
-## =========== Part 1: Loading and Visualizing Data =============
+#  =========== Part 1: Loading and Visualizing Data =============
 #  We start the exercise by first loading and visualizing the dataset. 
 #  The following code will load the dataset into your environment and plot
 #  the data.
-#
 
 # Load Training Data
 print('Loading and Visualizing Data ...')
@@ -51,59 +49,55 @@ m = X.size
 
 # Plot training data
 plt.scatter(X, y, marker='x', s=60, edgecolor='r', lw=1.5)
-plt.ylabel('Water flowing out of the dam (y)')            # Set the y-axis label
-plt.xlabel('Change in water level (x)')     # Set the x-axis label
+plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
+plt.xlabel('Change in water level (x)')  # Set the x-axis label
 
 input('Program paused. Press Enter to continue...')
 
-## =========== Part 2: Regularized Linear Regression Cost =============
+#  =========== Part 2: Regularized Linear Regression Cost =============
 #  You should now implement the cost function for regularized linear 
-#  regression. 
-#
+#  regression.
 
 theta = np.array([1, 1])
-J = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, 1)[0]
+J = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, Lambda=1)[0]
 
 print('Cost at theta = [1  1]: %f \n(this value should be about 303.993192)\n' % J)
 
 input('Program paused. Press Enter to continue...')
 
-## =========== Part 3: Regularized Linear Regression Gradient =============
+#  =========== Part 3: Regularized Linear Regression Gradient =============
 #  You should now implement the gradient for regularized linear 
 #  regression.
-#
 
 theta = np.array([1, 1])
-J, grad = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, 1)
+J, grad = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, Lambda=1)
 
-print('Gradient at theta = [1  1]:  [%f %f] \n(this value should be about [-15.303016 598.250744])\n' %(grad[0], grad[1]))
+print('Gradient at theta = [1  1]:  [%f %f] \n'
+      '(this value should be about [-15.303016 598.250744])\n' % (grad[0], grad[1]))
 
 input('Program paused. Press Enter to continue...')
 
-
-## =========== Part 4: Train Linear Regression =============
+#  =========== Part 4: Train Linear Regression =============
 #  Once you have implemented the cost and gradient correctly, the
 #  trainLinearReg function will use your cost function to train 
 #  regularized linear regression.
 # 
 #  Write Up Note: The data is non-linear, so this will not give a great 
 #                 fit.
-#
 
 #  Train linear regression with Lambda = 0
 Lambda = 0
-theta = trainLinearReg(np.column_stack((np.ones(m), X)), y, 1)
+theta = trainLinearReg(np.column_stack((np.ones(m), X)), y, Lambda=Lambda)
 
 #  Plot fit over the data
 plt.scatter(X, y, marker='x', s=20, edgecolor='r', lw=1.5)
-plt.ylabel('Water flowing out of the dam (y)')            # Set the y-axis label
-plt.xlabel('Change in water level (x)')     # Set the x-axis label
+plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
+plt.xlabel('Change in water level (x)')  # Set the x-axis label
 plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), '--', lw=2.0)
 
 input('Program paused. Press Enter to continue...')
 
-
-## =========== Part 5: Learning Curve for Linear Regression =============
+#  =========== Part 5: Learning Curve for Linear Regression =============
 #  Next, you should implement the learningCurve function. 
 #
 #  Write Up Note: Since the model is underfitting the data, we expect to
@@ -112,7 +106,9 @@ input('Program paused. Press Enter to continue...')
 
 Lambda = 0
 error_train, error_val = learningCurve(np.column_stack((np.ones(m), X)), y,
-                                       np.column_stack((np.ones(Xval.shape[0]), Xval)), yval, Lambda)
+                                       np.column_stack((np.ones(Xval.shape[0]), Xval)),
+                                       yval,
+                                       Lambda=Lambda)
 plt.figure()
 plt.plot(range(m), error_train, color='b', lw=0.5, label='Train')
 plt.plot(range(m), error_val, color='r', lw=0.5, label='Cross Validation')
@@ -131,10 +127,9 @@ for i in range(m):
 
 input('Program paused. Press Enter to continue...')
 
-## =========== Part 6: Feature Mapping for Polynomial Regression =============
+#  =========== Part 6: Feature Mapping for Polynomial Regression =============
 #  One solution to this is to use polynomial regression. You should now
 #  complete polyFeatures to map each example into its powers
-#
 
 p = 8
 
@@ -160,12 +155,11 @@ print(X_poly[0, :])
 
 input('Program paused. Press Enter to continue...')
 
-## =========== Part 7: Learning Curve for Polynomial Regression =============
+#  =========== Part 7: Learning Curve for Polynomial Regression =============
 #  Now, you will get to experiment with polynomial regression with multiple
 #  values of Lambda. The code below runs polynomial regression with 
 #  Lambda = 0. You should try running the code with different values of
 #  Lambda to see how the fit and learning curve change.
-#
 
 Lambda = 0
 theta = trainLinearReg(X_poly, y, Lambda, method='BFGS', maxiter=10)
@@ -176,8 +170,8 @@ plt.scatter(X, y, marker='x', s=10, edgecolor='r', lw=1.5)
 
 plotFit(min(X), max(X), mu, sigma, theta, p)
 
-plt.xlabel('Change in water level (x)')            # Set the y-axis label
-plt.ylabel('Water flowing out of the dam (y)')     # Set the x-axis label
+plt.xlabel('Change in water level (x)')  # Set the y-axis label
+plt.ylabel('Water flowing out of the dam (y)')  # Set the x-axis label
 # plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), marker='_',  lw=2.0)
 plt.title('Polynomial Regression Fit (Lambda = %f)' % Lambda)
 
@@ -198,11 +192,10 @@ for i in range(m):
 
 input('Program paused. Press Enter to continue...')
 
-## =========== Part 8: Validation for Selecting Lambda =============
+#  =========== Part 8: Validation for Selecting Lambda =============
 #  You will now implement validationCurve to test various values of 
 #  Lambda on a validation set. You will then use this to select the
 #  "best" Lambda value.
-#
 
 Lambda_vec, error_train, error_val = validationCurve(X_poly, y, X_poly_val, yval)
 

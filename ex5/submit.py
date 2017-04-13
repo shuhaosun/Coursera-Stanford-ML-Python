@@ -35,7 +35,7 @@ def output(part_id):
     yval = np.sin(np.arange(1, 11))
 
     fname = srcs[part_id-1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:
