@@ -1,3 +1,4 @@
+from show import show
 import scipy.io
 import matplotlib.pyplot as plt
 import numpy as np
@@ -51,6 +52,7 @@ m = X.size
 plt.scatter(X, y, marker='x', s=60, edgecolor='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
 plt.xlabel('Change in water level (x)')  # Set the x-axis label
+show()
 
 input('Program paused. Press Enter to continue...')
 
