@@ -8,6 +8,8 @@ def linearRegCostFunction(X, y, theta, Lambda):
     """
     # Initialize some useful values
     m = y.size  # number of training examples
+    J = 0.0
+    grad = 0.0
 
     # ====================== YOUR CODE HERE ===================================
     # Instructions: Compute the cost and gradient of regularized linear

@@ -61,7 +61,7 @@ input('Program paused. Press Enter to continue...')
 #  regression.
 
 theta = np.array([1, 1])
-J = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, Lambda=1)[0]
+J, _ = linearRegCostFunction(np.column_stack((np.ones(m), X)), y, theta, Lambda=1)
 
 print('Cost at theta = [1  1]: %f \n(this value should be about 303.993192)\n' % J)
 
