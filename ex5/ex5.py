@@ -49,7 +49,7 @@ Xtest = data['Xtest'][:, 0]
 m = X.size
 
 # Plot training data
-plt.scatter(X, y, marker='x', s=60, edgecolor='r', lw=1.5)
+plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
 plt.xlabel('Change in water level (x)')  # Set the x-axis label
 show()
@@ -92,10 +92,11 @@ Lambda = 0
 theta = trainLinearReg(np.column_stack((np.ones(m), X)), y, Lambda=Lambda)
 
 #  Plot fit over the data
-plt.scatter(X, y, marker='x', s=20, edgecolor='r', lw=1.5)
+plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
 plt.xlabel('Change in water level (x)')  # Set the x-axis label
 plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), '--', lw=2.0)
+show()
 
 input('Program paused. Press Enter to continue...')
 
@@ -113,8 +114,8 @@ error_train, error_val = learningCurve(np.column_stack((np.ones(m), X)), y,
                                        Lambda=Lambda)
 plt.figure()
 plt.plot(range(m), error_train, color='b', lw=0.5, label='Train')
-plt.plot(range(m), error_val, color='r', lw=0.5, label='Cross Validation')
-plt.title('Learning curve for linear regression')
+plt.plot(range(m), error_val, color='g', lw=0.5, label='Cross Validation')
+plt.title('Learning Curve for Linear Regression')
 plt.legend()
 plt.xlabel('Number of training examples')
 plt.ylabel('Error')
@@ -122,6 +123,7 @@ plt.ylabel('Error')
 plt.xlim(0, 13)
 plt.ylim(0, 150)
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
+show()
 
 print('Training Examples\tTrain Error\tCross Validation Error')
 for i in range(m):
@@ -168,24 +170,28 @@ theta = trainLinearReg(X_poly, y, Lambda, method='BFGS', maxiter=10)
 
 # Plot training data and fit
 plt.figure()
-plt.scatter(X, y, marker='x', s=10, edgecolor='r', lw=1.5)
+plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
 
 plotFit(min(X), max(X), mu, sigma, theta, p)
 
 plt.xlabel('Change in water level (x)')  # Set the y-axis label
 plt.ylabel('Water flowing out of the dam (y)')  # Set the x-axis label
-# plt.plot(X, np.column_stack((np.ones(m), X)).dot(theta), marker='_',  lw=2.0)
 plt.title('Polynomial Regression Fit (Lambda = %f)' % Lambda)
+show()
+
+input('Program paused. Press Enter to continue...')
 
 error_train, error_val = learningCurve(X_poly, y, X_poly_val, yval, Lambda)
-plt.plot(range(m), error_train, label='Train')
-plt.plot(range(m), error_val, label='Cross Validation')
+plt.figure()
+plt.plot(range(m), error_train, color='b', lw=0.5, label='Train')
+plt.plot(range(m), error_val, color='g', lw=0.5, label='Cross Validation')
 plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
 plt.xlabel('Number of training examples')
 plt.ylabel('Error')
 plt.xlim(0, 13)
 plt.ylim(0, 150)
-plt.legend()
+plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
+show()
 
 print('Polynomial Regression (Lambda = %f)\n\n' % Lambda)
 print('# Training Examples\tTrain Error\tCross Validation Error')
@@ -200,11 +206,14 @@ input('Program paused. Press Enter to continue...')
 #  "best" Lambda value.
 
 Lambda_vec, error_train, error_val = validationCurve(X_poly, y, X_poly_val, yval)
-
-plt.plot(Lambda_vec, error_train, Lambda_vec, error_val)
-plt.legend('Train', 'Cross Validation')
+plt.figure()
+plt.plot(Lambda_vec, error_train, color='b', lw=0.5, label='Train')
+plt.plot(Lambda_vec, error_val, color='g', lw=0.5, label='Cross Validation')
+plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
+plt.title('Polynomial Regression Validation Curve')
 plt.xlabel('Lambda')
 plt.ylabel('Error')
+show()
 
 print('Lambda\t\tTrain Error\tValidation Error')
 for i in range(Lambda_vec.size):
