@@ -1,4 +1,4 @@
-## Machine Learning Online Class
+#  Machine Learning Online Class
 #  Exercise 6 | Support Vector Machines
 #
 #  Instructions
@@ -14,7 +14,7 @@
 #
 #  For this exercise, you will not need to change any code in this file,
 #  or any other files other than those mentioned above.
-#
+
 from matplotlib import use, cm
 use('TkAgg')
 import numpy as np
@@ -25,11 +25,10 @@ from plotData import plotData
 from visualizeBoundary import visualizeBoundary
 from visualizeBoundaryLinear import visualizeBoundaryLinear
 
-## =============== Part 1: Loading and Visualizing Data ================
+#  =============== Part 1: Loading and Visualizing Data ================
 #  We start the exercise by first loading and visualizing the dataset. 
 #  The following code will load the dataset into your environment and plot
 #  the data.
-#
 
 print('Loading and Visualizing Data ...')
 
@@ -44,10 +43,9 @@ plotData(X, y)
 
 input('Program paused. Press Enter to continue...')
 
-## ==================== Part 2: Training Linear SVM ====================
+#  ==================== Part 2: Training Linear SVM ====================
 #  The following code will train a linear SVM on the dataset and plot the
 #  decision boundary learned.
-#
 
 # Load from ex6data1:
 # You will have X, y in your environment
@@ -67,10 +65,10 @@ visualizeBoundaryLinear(X, y, model)
 
 input('Program paused. Press Enter to continue...')
 
-## =============== Part 3: Implementing Gaussian Kernel ===============
+#  =============== Part 3: Implementing Gaussian Kernel ===============
 #  You will now implement the Gaussian kernel to use
 #  with the SVM. You should complete the code in gaussianKernel.m
-#
+
 print('Evaluating the Gaussian Kernel ...')
 
 x1 = np.array([1, 2, 1])
@@ -83,10 +81,9 @@ sigma = 2
 
 input('Program paused. Press Enter to continue...')
 
-## =============== Part 4: Visualizing Dataset 2 ================
+#  =============== Part 4: Visualizing Dataset 2 ================
 #  The following code will load the next dataset into your environment and
 #  plot the data.
-#
 
 print('Loading and Visualizing Data ...')
 
@@ -101,7 +98,7 @@ plotData(X, y)
 
 input('Program paused. Press Enter to continue...')
 
-## ========== Part 5: Training SVM with RBF Kernel (Dataset 2) ==========
+#  ========== Part 5: Training SVM with RBF Kernel (Dataset 2) ==========
 #  After you have implemented the kernel, we can now use it to train the
 #  SVM classifier.
 #
@@ -128,10 +125,9 @@ visualizeBoundary(X, y, model)
 
 input('Program paused. Press Enter to continue...')
 
-## =============== Part 6: Visualizing Dataset 3 ================
+#  =============== Part 6: Visualizing Dataset 3 ================
 #  The following code will load the next dataset into your environment and
 #  plot the data.
-#
 
 print('Loading and Visualizing Data ...')
 
@@ -146,11 +142,9 @@ plotData(X, y)
 
 input('Program paused. Press Enter to continue...')
 
-## ========== Part 7: Training SVM with RBF Kernel (Dataset 3) ==========
-
+# ========== Part 7: Training SVM with RBF Kernel (Dataset 3) ==========
 #  This is a different dataset that you can use to experiment with. Try
 #  different values of C and sigma here.
-#
 
 # Load from ex6data3:
 # You will have X, y in your environment
@@ -161,11 +155,10 @@ yval = data['yval'].flatten()
 # Try different SVM Parameters here
 C, sigma = dataset3Params(X, y, Xval, yval)
 gamma = 1.0 / (2.0 * sigma ** 2)
-# Train the SVM
 
+# Train the SVM
 clf = svm.SVC(C=C, kernel='rbf', tol=1e-3, max_iter=200, gamma=gamma)
 model = clf.fit(X, y)
 visualizeBoundary(X, y, model)
 
 input('Program paused. Press Enter to continue...')
-

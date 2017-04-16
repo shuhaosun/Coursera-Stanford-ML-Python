@@ -23,14 +23,14 @@ srcs = [
 
 def output(part_id):
     # Random Test Cases
-    x1 = np.sin(np.arange(1,11))
-    x2 = np.cos(np.arange(1,11))
+    x1 = np.sin(np.arange(1, 11))
+    x2 = np.cos(np.arange(1, 11))
     ec = 'the quick brown fox jumped over the lazy dog'
     wi = np.abs(np.round(x1 * 1863))
     wi = np.hstack((wi, wi))
 
-    fname = srcs[part_id-1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    fname = srcs[part_id - 1].rsplit('.', 1)[0]
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:

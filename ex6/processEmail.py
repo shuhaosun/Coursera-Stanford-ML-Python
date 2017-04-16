@@ -1,7 +1,8 @@
-from string import lower
+import re
+
 from porterStemmer import porterStemmer
 from getVocabList import getVocabList
-import re
+
 
 
 def processEmail(email_contents):
@@ -18,7 +19,7 @@ def processEmail(email_contents):
     # Init return value
     word_indices = []
 
-# ========================== Preprocess Email ===========================
+    # ========================== Preprocess Email ===========================
 
     # Find the Headers ( \n\n and remove )
     # Uncomment the following lines if you are working with raw emails with the
@@ -28,7 +29,7 @@ def processEmail(email_contents):
     # email_contents = email_contents(hdrstart(1):end)
 
     # Lower case
-    email_contents = lower(email_contents)
+    email_contents = email_contents.lower()
 
     # Strip all HTML
     # Looks for any expression that starts with < and ends with > and replace
@@ -55,7 +56,7 @@ def processEmail(email_contents):
     rx = re.compile('[$]+')
     email_contents = rx.sub('dollar ', email_contents)
 
-# ========================== Tokenize Email ===========================
+    # ========================== Tokenize Email ===========================
 
     # Output the email to screen as well
     print('==== Processed Email ====\n')
