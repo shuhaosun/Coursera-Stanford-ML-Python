@@ -20,10 +20,13 @@ use('TkAgg')
 import numpy as np
 import scipy.io
 from sklearn import svm
+
+from show import show
 from dataset3Params import dataset3Params
 from plotData import plotData
 from visualizeBoundary import visualizeBoundary
 from visualizeBoundaryLinear import visualizeBoundaryLinear
+from gaussianKernel import gaussianKernel
 
 #  =============== Part 1: Loading and Visualizing Data ================
 #  We start the exercise by first loading and visualizing the dataset. 
@@ -40,6 +43,7 @@ y = data['y'].flatten()
 
 # Plot training data
 plotData(X, y)
+show()
 
 input('Program paused. Press Enter to continue...')
 
@@ -62,6 +66,7 @@ C = 1
 clf = svm.SVC(C=C, kernel='linear', tol=1e-3, max_iter=20)
 model = clf.fit(X, y)
 visualizeBoundaryLinear(X, y, model)
+show()
 
 input('Program paused. Press Enter to continue...')
 
@@ -74,10 +79,10 @@ print('Evaluating the Gaussian Kernel ...')
 x1 = np.array([1, 2, 1])
 x2 = np.array([0, 4, -1])
 sigma = 2
-# sim = gaussianKernel(x1, x2, sigma)
-#
-# print 'Gaussian Kernel between x1 = [1 2 1], x2 = [0 4 -1], sigma = %0.5f : ' \
-#        '\t%f\n(this value should be about 0.324652)\n' % (sigma, sim)
+sim = gaussianKernel(x1, x2, sigma)
+
+print('Gaussian Kernel between x1 = [1 2 1], x2 = [0 4 -1], sigma = %0.5f : '
+      '\t%f\n(this value should be about 0.324652)\n' % (sigma, sim))
 
 input('Program paused. Press Enter to continue...')
 
@@ -95,6 +100,7 @@ y = data['y'].flatten()
 
 # Plot training data
 plotData(X, y)
+show()
 
 input('Program paused. Press Enter to continue...')
 
@@ -122,6 +128,7 @@ gamma = 1.0 / (2.0 * sigma ** 2)
 clf = svm.SVC(C=C, kernel='rbf', tol=1e-3, max_iter=200, gamma=gamma)
 model = clf.fit(X, y)
 visualizeBoundary(X, y, model)
+show()
 
 input('Program paused. Press Enter to continue...')
 
@@ -139,6 +146,7 @@ y = data['y'].flatten()
 
 # Plot training data
 plotData(X, y)
+show()
 
 input('Program paused. Press Enter to continue...')
 
@@ -160,5 +168,6 @@ gamma = 1.0 / (2.0 * sigma ** 2)
 clf = svm.SVC(C=C, kernel='rbf', tol=1e-3, max_iter=200, gamma=gamma)
 model = clf.fit(X, y)
 visualizeBoundary(X, y, model)
+show()
 
 input('Program paused. Press Enter to continue...')

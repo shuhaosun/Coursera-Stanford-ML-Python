@@ -1,6 +1,7 @@
 import numpy as np
-from plotData import plotData
 from matplotlib import pyplot as plt
+
+from plotData import plotData
 
 
 def visualizeBoundary(X, y, model):
@@ -21,5 +22,5 @@ def visualizeBoundary(X, y, model):
         vals[:, i] = model.predict(this_X)
 
     # Plot the SVM boundary
-    #contour(X1, X2, vals, [0 0], 'Color', 'b')
-    plt.contour(X1, X2, vals, levels=[0.0, 0.0])
+    # contour(X1, X2, vals, [0 0], 'Color', 'b')
+    plt.contour(X1, X2, vals, color='b', lw=0.5, levels=[0])

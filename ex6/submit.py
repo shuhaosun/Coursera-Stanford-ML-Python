@@ -26,7 +26,7 @@ def output(part_id):
     x1 = np.sin(np.arange(1, 11))
     x2 = np.cos(np.arange(1, 11))
     ec = 'the quick brown fox jumped over the lazy dog'
-    wi = np.abs(np.round(x1 * 1863))
+    wi = np.array(np.abs(np.round(x1 * 1863)), dtype=int)
     wi = np.hstack((wi, wi))
 
     fname = srcs[part_id - 1].rsplit('.', 1)[0]

@@ -77,12 +77,12 @@ print('Training Linear SVM (Spam Classification)')
 print('(this may take 1 to 2 minutes) ...')
 
 C = 0.1
-clf = svm.SVC(C=C, kernel='linear', tol=1e-3, max_iter=200)
+clf = svm.SVC(C=C, kernel='linear', tol=1e-4, max_iter=2000)
 model = clf.fit(X, y)
 
 p = model.predict(X)
 
-print('Training Accuracy: %f', np.mean(np.double(p == y)) * 100)
+print('Training Accuracy: %f\n' % (np.mean(np.double(p == y)) * 100))
 
 #  =================== Part 4: Test Spam Classification ================
 #  After training the classifier, we can evaluate it on a test set. We have
@@ -92,13 +92,13 @@ print('Training Accuracy: %f', np.mean(np.double(p == y)) * 100)
 # You will have Xtest, ytest in your environment
 data = scipy.io.loadmat('spamTest.mat')
 Xtest = data['Xtest']
-ytest = data['ytest']
+ytest = data['ytest'].flatten()
 
 print('Evaluating the trained Linear SVM on a test set ...')
 
 p = model.predict(Xtest)
 
-print('Test Accuracy: %f', np. mean(np.double(p == ytest)) * 100)
+print('Test Accuracy: %f\n' % (np.mean(np.double(p == ytest)) * 100))
 
 #  ================= Part 5: Top Predictors of Spam ====================
 #  Since the model we are training is a linear SVM, we can inspect the
@@ -108,16 +108,15 @@ print('Test Accuracy: %f', np. mean(np.double(p == ytest)) * 100)
 #  'thinks' that these words are the most likely indicators of spam.
 
 # Sort the weights and obtain the vocabulary list
-
 t = sorted(list(enumerate(model.coef_[0])), key=lambda e: e[1], reverse=True)
 d = OrderedDict(t)
-idx = d.keys()
-weight = d.values()
+idx = list(d.keys())
+weight = list(d.values())
 vocabList = getVocabList()
 
 print('Top predictors of spam: ')
 for i in range(15):
-    print(' %-15s (%f)' %(vocabList[idx[i]], weight[i]))
+    print(' %-15s (%f)' % (vocabList[idx[i]], weight[i]))
 
 print('Program paused. Press enter to continue.')
 
