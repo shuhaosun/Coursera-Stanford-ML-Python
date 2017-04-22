@@ -29,8 +29,8 @@ def output(part_id):
     C = Z[:5, :]
     idx = (np.mod(np.arange(1, 16), 3)).T
 
-    fname = srcs[part_id-1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    fname = srcs[part_id - 1].rsplit('.', 1)[0]
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:

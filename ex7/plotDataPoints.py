@@ -3,7 +3,6 @@ from show import show
 
 
 def plotDataPoints(X, idx):
-
     """plots data points in X, coloring them so that those
     with the same index assignments in idx have the same color
     """

@@ -1,4 +1,4 @@
-## Machine Learning Online Class
+#  Machine Learning Online Class
 #  Exercise 7 | Principle Component Analysis and K-Means Clustering
 #
 #  Instructions
@@ -16,13 +16,12 @@
 #
 #  For this exercise, you will not need to change any code in this file,
 #  or any other files other than those mentioned above.
-#
 
-## ================= Part 1: Find Closest Centroids ====================
+#  ================= Part 1: Find Closest Centroids ====================
 #  To help you implement K-Means, we have divided the learning algorithm 
 #  into two functions -- findClosestCentroids and computeCentroids. In this
 #  part, you shoudl complete the code in the findClosestCentroids function. 
-#
+
 from matplotlib import use, cm
 use('TkAgg')
 import numpy as np
@@ -35,6 +34,7 @@ from computeCentroids import computeCentroids
 from runkMeans import runkMeans
 from kMeansInitCentroids import kMeansInitCentroids
 from show import show
+
 
 print('Finding closest centroids.')
 
@@ -56,13 +56,13 @@ print('(the closest centroids should be 0, 2, 1 respectively)')
 
 input('Program paused. Press Enter to continue...')
 
-## ===================== Part 2: Compute Means =========================
+#  ===================== Part 2: Compute Means =========================
 #  After implementing the closest centroids function, you should now
 #  complete the computeCentroids function.
-#
+
 print('Computing centroids means.')
 
-#  Compute means based on the closest centroids found in the previous part.
+# Compute means based on the closest centroids found in the previous part.
 centroids = computeCentroids(X, idx, K)
 
 print('Centroids computed after initial finding of closest centroids:')
@@ -77,12 +77,12 @@ print('   [ 7.119387 3.616684 ]')
 input('Program paused. Press Enter to continue...')
 
 
-## =================== Part 3: K-Means Clustering ======================
+#  =================== Part 3: K-Means Clustering ======================
 #  After you have completed the two functions computeCentroids and
 #  findClosestCentroids, you have all the necessary pieces to run the
 #  kMeans algorithm. In this part, you will run the K-Means algorithm on
 #  the example dataset we have provided. 
-#
+
 print('Running K-Means clustering on example dataset.')
 
 # Load an example dataset
@@ -106,17 +106,16 @@ print('K-Means Done.')
 
 input('Program paused. Press Enter to continue...')
 
-## ============= Part 4: K-Means Clustering on Pixels ===============
+#  ============= Part 4: K-Means Clustering on Pixels ===============
 #  In this exercise, you will use K-Means to compress an image. To do this,
 #  you will first run K-Means on the colors of the pixels in the image and
 #  then you will map each pixel on to it's closest centroid.
 #  
 #  You should now complete the code in kMeansInitCentroids.m
-#
 
 print('Running K-Means clustering on pixels from an image.')
 
-#  Load an image of a bird
+# Load an image of a bird
 A = scipy.misc.imread('bird_small.png')
 
 # If imread does not work for you, you can try instead
@@ -148,7 +147,7 @@ centroids, idx = runkMeans(X, initial_centroids, max_iters)
 input('Program paused. Press Enter to continue...')
 
 
-## ================= Part 5: Image Compression ======================
+#  ================= Part 5: Image Compression ======================
 #  In this part of the exercise, you will use the clusters of K-Means to
 #  compress an image. To do this, we first find the closest clusters for
 #  each example. After that, we 

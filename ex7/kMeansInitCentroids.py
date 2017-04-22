@@ -9,9 +9,10 @@ def kMeansInitCentroids(X, K):
     # You should return this values correctly
     centroids = np.zeros((K, X.shape[1]))
 
-# ====================== YOUR CODE HERE ======================
-# Instructions: You should set centroids to randomly chosen examples from
-#               the dataset X
-#
-# =============================================================
+    # ====================== YOUR CODE HERE ======================
+    # Instructions: You should set centroids to randomly chosen examples from
+    #               the dataset X
+    #
+    # =============================================================
+
     return centroids

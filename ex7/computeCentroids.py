@@ -2,7 +2,8 @@ import numpy as np
 
 
 def computeCentroids(X, idx, K):
-    """returns the new centroids by
+    """
+    returns the new centroids by
     computing the means of the data points assigned to each centroid. It is
     given a dataset X where each row is a single data point, a vector
     idx of centroid assignments (i.e. each entry in range [1..K]) for each
@@ -11,23 +12,20 @@ def computeCentroids(X, idx, K):
     assigned to it.
     """
 
-# Useful variables
+    # Useful variables
     m, n = X.shape
 
-# You need to return the following variables correctly.
+    # You need to return the following variables correctly.
     centroids = []
 
-
-# ====================== YOUR CODE HERE ======================
-# Instructions: Go over every centroid and compute mean of all points that
-#               belong to it. Concretely, the row vector centroids(i, :)
-#               should contain the mean of the data points assigned to
-#               centroid i.
-#
-# Note: You can use a for-loop over the centroids to compute this.
-# 
-
-
-# =============================================================
+    # ====================== YOUR CODE HERE ======================
+    # Instructions: Go over every centroid and compute mean of all points that
+    #               belong to it. Concretely, the row vector centroids(i, :)
+    #               should contain the mean of the data points assigned to
+    #               centroid i.
+    #
+    # Note: You can use a for-loop over the centroids to compute this.
+    #
+    # =============================================================
 
     return centroids
