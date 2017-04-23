@@ -46,6 +46,7 @@ data = scipy.io.loadmat('ex7data1.mat')
 X = data['X']
 
 # Visualize the example dataset
+plt.figure()
 plt.scatter(X[:, 0], X[:, 1], marker='o', color='b', facecolors='none', lw=1.0)
 plt.axis([0.5, 6.5, 2, 8])
 plt.axis('equal')
@@ -70,12 +71,16 @@ U, S, V = pca(X_norm)
 # Draw the eigenvectors centered at mean of data. These lines show the
 # directions of maximum variations in the dataset.
 mu2 = mu + 1.5 * S.dot(U.T)
+plt.figure()
+plt.scatter(X[:, 0], X[:, 1], marker='o', color='b', facecolors='none', lw=1.0)
+plt.axis([0.5, 6.5, 2, 8])
+plt.axis('equal')
 plt.plot([mu[0], mu2[0, 0]], [mu[1], mu2[0, 1]], '-k', lw=2)
 plt.plot([mu[0], mu2[1, 0]], [mu[1], mu2[1, 1]], '-k', lw=2)
 show()
 
 print('Top eigenvector: ')
-print(' U(:,1) = %f %f ', U[0,0], U[1,0])
+print(' U(:,1) = %f %f ' % (U[0, 0], U[1, 0]))
 print('(you should expect to see -0.707107 -0.707107)')
 
 input('Program paused. Press Enter to continue...')
@@ -96,16 +101,15 @@ plt.scatter(X_norm[:, 0], X_norm[:, 1], marker='o',
             color='b', facecolors='none', lw=1.0)
 plt.axis([-4, 3, -4, 3])  # axis square
 plt.axis('equal')
-show()
 
 # Project the data onto K = 1 dimension
 K = 1
 Z = projectData(X_norm, U, K)
-print('Projection of the first example: %f', Z[0])
+print('Projection of the first example: %f' % Z[0])
 print('(this value should be about 1.481274)')
 
 X_rec = recoverData(Z, U, K)
-print('Approximation of the first example: %f %f'% (X_rec[0, 0], X_rec[0, 1]))
+print('Approximation of the first example: %f %f' % (X_rec[0, 0], X_rec[0, 1]))
 print('(this value should be about  -1.047419 -1.047419)')
 
 #  Draw lines connecting the projected points to the original points
@@ -113,8 +117,8 @@ plt.scatter(X_rec[:, 0], X_rec[:, 1], marker='o',
             color='r', facecolor='none', lw=1.0)
 for i in range(len(X_norm)):
     plt.plot([X_norm[i, 0], X_rec[i, 0]], [X_norm[i, 1], X_rec[i, 1]], '--k')
-
 show()
+
 input('Program paused. Press Enter to continue...')
 
 #  =============== Part 4: Loading and Visualizing Face Data =============
@@ -128,6 +132,7 @@ data = scipy.io.loadmat('ex7faces.mat')
 X = data['X']
 
 # Display the first 100 faces in the dataset
+plt.figure()
 displayData(X[0:100, :])
 
 input('Program paused. Press Enter to continue...')
@@ -146,6 +151,7 @@ X_norm, mu, sigma = featureNormalize(X)
 U, S, V = pca(X_norm)
 
 #  Visualize the top 36 eigenvectors found
+plt.figure()
 displayData(U[:, 1:36].T)
 
 input('Program paused. Press Enter to continue...')
@@ -174,6 +180,7 @@ K = 100
 X_rec = recoverData(Z, U, K)
 
 # Display normalized data
+plt.figure()
 plt.subplot(1, 2, 1)
 displayData(X_norm[:100,:])
 plt.title('Original faces')
@@ -211,7 +218,8 @@ centroids, idx = runkMeans(X, initial_centroids, max_iters)
 
 # Sample 1000 random indexes (since working with all the data is
 # too expensive. If you have a fast computer, you may increase this.
-sel = np.floor(np.random.random(1000) * len(X)) + 1
+sel = np.floor(np.random.random(1000) * len(X))
+sel = sel.astype(int)
 
 # Setup Color Palette
 
@@ -223,9 +231,11 @@ xs = Xs[:, 0]
 ys = Xs[:, 1]
 zs = Xs[:, 2]
 cmap = plt.get_cmap("jet")
-idxn = sel.astype('float') / max(sel.astype('float'))
+idxn = idx[sel]
+idxn = idxn.astype('float') / max(idxn.astype('float'))
 colors = cmap(idxn)
-# ax = Axes3D(fig)
+
+ax = Axes3D(fig)
 ax.scatter3D(xs, ys, zs=zs, edgecolors=colors,
              marker='o', facecolors='none', lw=0.4, s=10)
 
@@ -246,10 +256,9 @@ Z = projectData(X_norm, U, 2)
 # Plot in 2D
 plt.figure()
 zs = np.array([Z[s] for s in sel])
-idxs = np.array([idx[s] for s in sel])
 
-# plt.scatter(zs[:,0], zs[:,1])
-plotDataPoints(zs, idxs)
+plotDataPoints(zs, idxn)
 plt.title('Pixel dataset plotted in 2D, using PCA for dimensionality reduction')
 show()
+
 input('Program paused. Press Enter to continue...')

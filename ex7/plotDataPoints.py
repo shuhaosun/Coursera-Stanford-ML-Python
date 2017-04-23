@@ -12,10 +12,8 @@ def plotDataPoints(X, idx):
     #
     # # Plot the data
 
-    # c = dict(enumerate(np.eye(3)))
-    # colors=idx
-    map = plt.get_cmap("jet")
+    cmap = plt.get_cmap("jet")
     idxn = idx.astype('float') / max(idx.astype('float'))
-    colors = map(idxn)
-    plt.scatter(X[:, 0], X[:, 1], 15, edgecolors=colors, marker='o', facecolors='none', lw=0.5)
-    show()
+    colors = cmap(idxn)
+    plt.scatter(X[:, 0], X[:, 1], 15, edgecolors=colors,
+                marker='o', facecolors='none', lw=0.5)

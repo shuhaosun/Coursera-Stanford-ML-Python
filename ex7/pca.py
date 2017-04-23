@@ -10,6 +10,7 @@ def pca(X):
     m, n = X.shape
 
     # You need to return the following variables correctly.
+    # S must be a diagonal matrix.
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: You should first compute the covariance matrix. Then, you

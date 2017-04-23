@@ -11,7 +11,7 @@ def findClosestCentroids(X, centroids):
     K = len(centroids)
 
     # You need to return the following variables correctly.
-    idx = np.zeros(X.shape[0])
+    idx = np.zeros(X.shape[0], dtype=int)
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: Go over every example, find its closest centroid, and store
@@ -21,7 +21,8 @@ def findClosestCentroids(X, centroids):
     #               range 1..K
     #
     # Note: You can use a for-loop over the examples to compute this.
+    #
     # =============================================================
 
-    return val, idx
+    return idx
 

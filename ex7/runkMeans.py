@@ -1,9 +1,11 @@
-from computeCentroids import computeCentroids
-from plotProgresskMeans import plotProgresskMeans
-from findClosestCentroids import findClosestCentroids
 import matplotlib.pyplot as plt
 import numpy as np
 import itertools
+
+from computeCentroids import computeCentroids
+from plotProgresskMeans import plotProgresskMeans
+from findClosestCentroids import findClosestCentroids
+from show import show
 
 
 def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
@@ -19,7 +21,8 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
 
     # Plot the data if we are plotting progress
     if plot_progress:
-        plt.figure()
+        fig = plt.figure()
+        ax = plt.gca()
 
     # Initialize values
     m, n = X.shape
@@ -37,15 +40,17 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
         print('K-Means iteration %d/%d...' % (i, max_iters))
 
         # For each example in X, assign it to the closest centroid
-        _, idx = findClosestCentroids(X, centroids)
+        idx = findClosestCentroids(X, centroids)
     
         # Optionally, plot progress here
         if plot_progress:
             color = rgb[int(next(c))]
             plotProgresskMeans(X, np.array(centroids),
-                               np.array(previous_centroids), idx, K, i, color)
+                               np.array(previous_centroids),
+                               idx, K, i, color, ax)
             previous_centroids = centroids
-            # raw_input("Press Enter to continue...")
+            show()
+            fig.canvas.draw()
 
         # Given the memberships, compute new centroids
         centroids = computeCentroids(X, idx, K)
