@@ -9,6 +9,7 @@ def estimateGaussian(X):
       The output is an n-dimensional vector mu, the mean of the data set
       and the variances sigma^2, an n x 1 vector
     """
+
     m = len(X)
 
     # ====================== YOUR CODE HERE ======================

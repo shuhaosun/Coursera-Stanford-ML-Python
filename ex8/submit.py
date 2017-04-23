@@ -38,7 +38,7 @@ def output(part_id):
     params = np.hstack((X.T.flatten(), Theta.T.flatten()))
 
     fname = srcs[part_id - 1].rsplit('.', 1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    mod = __import__(fname, fromlist=[fname], level=0)
     func = getattr(mod, fname)
 
     if part_id == 1:

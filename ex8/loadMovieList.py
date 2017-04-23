@@ -7,7 +7,7 @@ def loadMovieList():
     and returns a cell array of the words in movieList.
     """
 
-    ## Read the fixed movieulary list
+    # Read the fixed movieulary list
     with io.open('movie_ids.txt', encoding='ISO-8859-1') as f:
 
         # Store all movies in cell array movie{}

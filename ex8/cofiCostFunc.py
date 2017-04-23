@@ -2,13 +2,12 @@ import numpy as np
 
 
 def cofiCostFunc(params, Y, R, num_users, num_movies, num_features, Lambda):
-    """returns the cost and gradient for the
+    """returns the cost and gradient for the collaborative filtering problem.
     """
 
     # Unfold the U and W matrices from params
     X = np.array(params[:num_movies*num_features]).reshape(num_features, num_movies).T.copy()
     Theta = np.array(params[num_movies*num_features:]).reshape(num_features, num_users).T.copy()
-
 
     # You need to return the following values correctly
     J = 0
@@ -38,6 +37,6 @@ def cofiCostFunc(params, Y, R, num_users, num_movies, num_features, Lambda):
     #                     partial derivatives w.r.t. to each element of Theta
     # =============================================================
 
-    grad = np.hstack((X_grad.T.flatten(),Theta_grad.T.flatten()))
+    grad = np.hstack((X_grad.T.flatten(), Theta_grad.T.flatten()))
 
     return J, grad
