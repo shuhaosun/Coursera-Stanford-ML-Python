@@ -22,4 +22,3 @@ def visualizeFit(X, mu, sigma2):
     # Do not plot if there are infinities
     if not isinf(np.sum(Z)):
         plt.contour(X1[0], X1[1], Z, 10.0 ** np.arange(-20, 0, 3).T)
-        show()

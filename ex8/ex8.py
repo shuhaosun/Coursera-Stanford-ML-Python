@@ -52,7 +52,6 @@ plt.ylabel('Throughput (mb/s)')
 show()
 input('Program paused. Press Enter to continue...')
 
-
 # ================== Part 2: Estimate the dataset statistics ===================
 #  For this exercise, we assume a Gaussian distribution for the dataset.
 #
@@ -71,6 +70,7 @@ mu, sigma2 = estimateGaussian(X)
 p = multivariateGaussian(X, mu, sigma2)
 
 # Visualize the fit
+plt.figure()
 visualizeFit(X,  mu, sigma2)
 plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
@@ -93,6 +93,10 @@ print('   (you should see a value epsilon of about 8.99e-05)')
 outliers = np.where(p < epsilon, True, False)
 
 # Draw a red circle around those outliers
+plt.figure()
+visualizeFit(X,  mu, sigma2)
+plt.xlabel('Latency (ms)')
+plt.ylabel('Throughput (mb/s)')
 plt.plot(X[outliers, 0], X[outliers, 1], 'ro', lw=2,
          markersize=10, fillstyle='none', markeredgewidth=1)
 show()

@@ -49,7 +49,8 @@ print('Average rating for movie 1 (Toy Story): %f / 5' % np.mean(Y[0, R[0, :]]))
 # We can "visualize" the ratings matrix by plotting it with imagesc
 
 plt.figure()
-plt.imshow(Y, aspect='equal', origin='upper', extent=(0, Y.shape[1], 0, Y.shape[0]/2.0))
+plt.imshow(Y, aspect='equal', origin='upper',
+           extent=(0, Y.shape[1], 0, Y.shape[0]/2.0))
 plt.ylabel('Movies')
 plt.xlabel('Users')
 show()
