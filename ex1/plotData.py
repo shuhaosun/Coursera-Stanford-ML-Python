@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
-
 
 def plotData(x, y):
     """
@@ -16,5 +14,10 @@ def plotData(x, y):
 #               as the x and y arguments of this function.
 
     plt.figure()  # open a new figure window
+    plt.scatter(x,y, s=30, c='r', marker='x', linewidths=1)
+    plt.xlim(4,24)
+    plt.xlabel('Population of City in 10,000s')
+    plt.ylabel('Profit in $10,000s')    
+
 
 # ============================================================

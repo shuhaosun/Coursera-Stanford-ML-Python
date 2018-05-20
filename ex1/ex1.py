@@ -54,7 +54,6 @@ y = data[:, 1]
 print('Plotting Data ...')
 plotData(x=data[:, 0], y=data[:, 1])
 show()
-
 input('Program paused. Press Enter to continue...')
 
 # =================== Part 3: Gradient descent ===================
@@ -75,14 +74,14 @@ theta, J_history = gradientDescent(X, y, theta, alpha, iterations)
 # print theta to screen
 print('Theta found by gradient descent: ')
 print('%s %s \n' % (theta[0], theta[1]))
+#print(J_history)
 
 # Plot the linear fit
 plt.figure()
-plotData(x=data[:, 0], y=data[:, 1])
+plt.scatter(X[:,1], y, s=30, c='r', marker='x', linewidths=1)
 plt.plot(X[:, 1], X.dot(theta), '-', label='Linear regression')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
-
 input('Program paused. Press Enter to continue...')
 
 # Predict values for population sizes of 35,000 and 70,000
@@ -94,48 +93,35 @@ print('For population = 70,000, we predict a profit of {:.4f}'.format(predict2 *
 # ============= Part 4: Visualizing J(theta_0, theta_1) =============
 print('Visualizing J(theta_0, theta_1) ...')
 
-# Grid over which we will calculate J
-theta0_vals = np.linspace(-10, 10, X.shape[0])
-theta1_vals = np.linspace(-1, 4, X.shape[0])
+# Create grid coordinates for plotting
+B0 = np.linspace(-10, 10, X.shape[0])
+B1 = np.linspace(-1, 4, X.shape[0])
+xx, yy = np.meshgrid(B0, B1, indexing='xy')
+Z = np.zeros((B0.size,B1.size))
+# Calculate Z-values (Cost) based on grid of coefficients
+for (i,j),v in np.ndenumerate(Z):
+    Z[i,j] = computeCost(X,y, theta=[[xx[i,j]], [yy[i,j]]])
 
-# initialize J_vals to a matrix of 0's
-J_vals = np.array(np.zeros(X.shape[0]).T)
-
-for i in range(theta0_vals.size):
-    col = []
-    for j in range(theta1_vals.size):
-        t = np.array([theta0_vals[i], theta1_vals[j]])
-        col.append(computeCost(X, y, t.T))
-    J_vals = np.column_stack((J_vals, col))
-
-# Because of the way meshgrids work in the surf command, we need to
-# transpose J_vals before calling surf, or else the axes will be flipped
-J_vals = J_vals[:, 1:].T
-theta0_vals, theta1_vals = np.meshgrid(theta0_vals, theta1_vals)
-
-# Surface plot
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-ax.plot_surface(theta0_vals, theta1_vals, J_vals, rstride=8, cstride=8, alpha=0.3,
-                cmap=cm.coolwarm, linewidth=0, antialiased=False)
-ax.set_xlabel(r'$\theta_0$')
-ax.set_ylabel(r'$\theta_1$')
-ax.set_zlabel(r'J($\theta$)')
-show()
-
-input('Program paused. Press Enter to continue...')
+fig = plt.figure(figsize=(15,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122, projection='3d')
 
 # Contour plot
-plt.figure()
+#CS = ax1.contour(B0, B1, Z, np.logspace(-2, 3, 30), cmap=plt.cm.jet)
+CS = ax1.contour(B0, B1, Z)
+ax1.scatter(theta[0],theta[1], c='r')
 
-# Plot J_vals as 15 contours spaced logarithmically between 0.01 and 100
-ax = plt.contour(theta0_vals, theta1_vals, J_vals, np.logspace(-2, 3, 20))
-plt.clabel(ax, inline=1, fontsize=10)
-plt.xlabel(r'$\theta_0$')
-plt.ylabel(r'$\theta_1$')
-plt.plot(0.0, 0.0, 'rx', linewidth=2, markersize=10)
+# Surface plot
+ax2.plot_surface(xx, yy, Z, rstride=1, cstride=1, alpha=0.6, cmap=plt.cm.jet)
+ax2.set_zlabel('Cost')
+ax2.set_zlim(Z.min(),Z.max())
+ax2.view_init(elev=15, azim=230)
+
+# settings common to both plots
+for ax in fig.axes:
+    ax.set_xlabel(r'$\theta_0$', fontsize=17)
+    ax.set_ylabel(r'$\theta_1$', fontsize=17)
 show()
-
 input('Program paused. Press Enter to continue...')
 
 # =============Use Scikit-learn =============
